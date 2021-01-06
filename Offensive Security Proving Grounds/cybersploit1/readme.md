@@ -1,11 +1,17 @@
 
-Target Information 
+#Target Information 
 
-|Date |01/04/2021 |
-|Name |CyberSploit1 |
-|Difficulty |Easy |
-|Location |Offensive Security Proving Grounds |
-|Author |Cyberheisen |
+### Date:
+01/04/2021  
+### Name: 
+CyberSploit1  
+### Difficulty:
+Easy  
+### Location:
+Offensive Security Proving Grounds/Vulnhb
+### Author:
+[@Cyberheisen](https://www.twitter.com/cyberheisen)    
+
 # Obligatory Disclaimer 
 
 The tools and techniques described in this material are meant for educational purposes.  Their use on targets without obtaining prior consent is illegal and it is your responsibility to understand and follow any applicable local, state, and federal laws.  Any liability as a result of your actions are yours alone. 
@@ -24,25 +30,25 @@ And will spin up a web server to give us easy access to all our files.
 
 By running the webserver as a job and sending output to  /dev/null , we keep our terminal clear. With the webserver online, we now have quick access to our CTF files. 
 
-![](CyberSploit1.003.png)![](CyberSploit1.004.png)
+![](CyberSploit1.004.png)
 
 The initial port scan is complete.  Looks like we have two services: SSH and HTTP at 22 and 80, respectively.  Let's take a look at the web service. 
 
-![](CyberSploit1.005.png)![](CyberSploit1.006.png)
+![](CyberSploit1.006.png)
 
 The web page looks custom.  Let’s browse around and see if there’s anything useful to us. 
 
-![](CyberSploit1.007.png)![](CyberSploit1.008.png)
+![](CyberSploit1.008.png)
 
 I generally like to start by looking at the page source, especially when the site looks custom.  In this case, it’s a quick score as we find a commented Username: itsskv 
 
-![](CyberSploit1.009.png)![](CyberSploit1.010.png)
+![](CyberSploit1.010.png)
 
 None of the links on the page go anywhere. 
 
 AutoRecon  has completed, so let's take a look at the  gobuster results and see if any additional web directories were found.  Eyeing the list ![](CyberSploit1.011.png)for "Status: 200 " we see there’s a robots.txt file. 
 
-![](CyberSploit1.012.png)![](CyberSploit1.013.png)
+![](CyberSploit1.013.png)
 
 The robots.txt file was interesting as it contained what appeared to be a  base64 encoded string. 
 
@@ -81,7 +87,7 @@ Perhaps there's a kernel exploit we can use?  Let's find what version of Linux w
 
 We'll search on Exploit-db to see if there are any known privilege escalation vulnerabilities. 
 
-![](CyberSploit1.021.png)![](CyberSploit1.022.png)
+![](CyberSploit1.022.png)
 
 That third one looks like it may be useful.  We look through the code and download it to target. 
 
