@@ -1,13 +1,13 @@
 # Target Information
 
-  **Date**         01/06/2021
+  **Date** 01/06/2021  
   ---------------- --------------------------------------------------------------------------------
-  **Name**         loly
-  **Difficulty**   Intermediate
-  **Location**     [Offensive Security Proving Grounds](https://www.offensive-security.com/labs/)
-  **Author**       [Cyberheisen](https://www.twitter.com/cyberheisen)
+  **Name**         loly  
+  **Difficulty**   Intermediate  
+  **Location**     [Offensive Security Proving Grounds](https://www.offensive-security.com/labs/)  
+  **Author**       [Cyberheisen](https://www.twitter.com/cyberheisen)  
 
-# [Obligatory Disclaimer]{.ul}
+# [Obligatory Disclaimer]
 
 The tools and techniques described in this material are meant for
 educational purposes. Their use on targets without obtaining prior
@@ -17,21 +17,19 @@ because of your actions is yours alone.
 
 Any views and opinions expressed in this document are my own.
 
-# [Walkthrough]{.ul}
+# [Walkthrough]
 
  Starting with an Nmap quick scan results from AutoRecon
 
  
 
-![](\1image1.png){width="5.972222222222222in"
-height="3.348611111111111in"}
+![](\1image1.png)
 
 Anything good on gobuster?
 
  
 
-![](\1image2.png){width="3.348611111111111in"
-height="0.6055555555555555in"}
+![](\1image2.png)
 
  
 
@@ -40,8 +38,7 @@ work as it points to a domain name loly.lc, rather than the ip address.
 
  
 
-![](image3.png){width="6.311805555555556in"
-height="8.110416666666667in"}
+![](image3.png)
 
  
 
@@ -51,11 +48,9 @@ then put the updated hosts file back in /etc
 
  
 
-![](image4.png){width="4.247916666666667in"
-height="1.0277777777777777in"}
+![](image4.png)
 
-![](image5.png){width="5.2752285651793525in"
-height="1.312020997375328in"}
+![](image5.png)
 
  
 
@@ -65,8 +60,7 @@ Now we have a working website.
 
  
 
-![](image6.png){width="8.247916666666667in"
-height="4.284722222222222in"}
+![](image6.png)
 
  
 
@@ -82,8 +76,7 @@ vulnerabilities or configuration issues we can leverage.
 
  
 
-![](image7.png){width="6.779861111111111in"
-height="5.660416666666666in"}
+![](image7.png)
 
  
 
@@ -92,8 +85,7 @@ vulnerabilities. Let\'s see if we can use any of those.
 
  
 
-![](image8.png){width="6.807638888888889in"
-height="2.8256944444444443in"}
+![](image8.png)
 
  
 
@@ -107,8 +99,7 @@ Next step, let\'s try to enumerate users. We do this with the
 
  
 
-![](image9.png){width="6.807638888888889in"
-height="4.238194444444445in"}
+![](image9.png)
 
  
 
@@ -116,7 +107,7 @@ We found a user: loly!
 
  
 
-![](image10.png){width="6.43125in" height="1.4861111111111112in"}
+![](image10.png)
 
  
 
@@ -124,8 +115,7 @@ Now lets run a password brute force attack against Wordpress.
 
  
 
-![](image11.png){width="9.779861111111112in"
-height="3.3208333333333333in"}
+![](image11.png)
 
  
 
@@ -133,7 +123,7 @@ height="3.3208333333333333in"}
 
  
 
-![](image12.png){width="10.036805555555556in" height="1.15625in"}
+![](image12.png)
 
  
 
@@ -142,8 +132,7 @@ we\'re in!
 
  
 
-![](image13.png){width="7.449305555555555in"
-height="4.889583333333333in"}
+![](image13.png)
 
  
 
@@ -159,8 +148,7 @@ anything there.
 
  
 
-![](image14.png){width="11.100694444444445in"
-height="5.660416666666666in"}
+![](image14.png)
 
  
 
@@ -169,8 +157,7 @@ that may be helpful.
 
  
 
-![](image15.png){width="9.972222222222221in"
-height="3.7888888888888888in"}
+![](image15.png)
 
  
 
@@ -186,8 +173,7 @@ We update the php-reverse-shell.php code with our IP address.
 
  
 
-![](image16.png){width="4.366666666666666in"
-height="1.6604166666666667in"}
+![](image16.png)
 
  
 
@@ -197,8 +183,7 @@ And we zip and upload.
 
  
 
-![](image17.png){width="2.1006944444444446in"
-height="0.4861111111111111in"}
+![](image17.png)
 
  
 
@@ -211,8 +196,7 @@ per the AdRotate settings.
 
  
 
-![](image18.png){width="9.633333333333333in"
-height="2.0458333333333334in"}
+![](image18.png)
 
  
 
@@ -222,8 +206,7 @@ We hit the url
 
  
 
-![](image19.png){width="11.348611111111111in"
-height="3.4770833333333333in"}
+![](image19.png)
 
  
 
@@ -233,7 +216,7 @@ And we have a shell!
 
  
 
-![](image20.png){width="9.15625in" height="1.6881944444444446in"}
+![](image20.png)
 
  
 
@@ -241,8 +224,7 @@ Grabbed the local.txt
 
  
 
-![](image21.png){width="6.743055555555555in"
-height="4.972222222222222in"}
+![](image21.png)
 
  
 
@@ -251,8 +233,7 @@ upgrade it.
 
  
 
-![](image22.png){width="3.0277777777777777in"
-height="1.054861111111111in"}
+![](image22.png)
 
  
 
@@ -264,8 +245,7 @@ Nope.
 
  
 
-![](image23.png){width="4.183333333333334in"
-height="3.2020833333333334in"}
+![](image23.png)
 
  
 
@@ -273,13 +253,11 @@ Let\'s see if our kernel is vulnerable...
 
  
 
-![](image24.png){width="2.9819444444444443in"
-height="0.5319444444444444in"}
+![](image24.png)
 
  
 
-![](image25.png){width="8.981944444444444in"
-height="0.7888888888888889in"}
+![](image25.png)
 
  
 
@@ -295,31 +273,27 @@ used to upload our shell, so we need to zip the exploit. 
 
  
 
-![](image26.png){width="7.440277777777778in"
-height="1.2847222222222223in"}
+![](image26.png)
 
  
 
-![](image27.png){width="6.679166666666666in"
-height="0.7798611111111111in"}
+![](image27.png)
 
  
 
  Now that we have it on the server, we'll make it executable and run it.
 
-![](image28.png){width="7.990972222222222in"
-height="4.688194444444444in"}
+![](image28.png)
 
 We have a shell and root!
 
  
 
-![](image29.png){width="6.926388888888889in"
-height="4.027777777777778in"}
+![](image29.png)
 
  
 
-# [Conclusion]{.ul}
+# [Conclusion]
 
 This was a fun box and I thoroughly enjoyed the challenge. Obtaining
 admin access into Wordpress was trivial, but finding a working method to
@@ -334,23 +308,23 @@ was a nice little refresher for me.
 Many thanks to [SunCSR](https://www.vulnhub.com/author/suncsr-team,696/)
 Team for the challenge!
 
-# [FLAGS]{.ul}
+# [FLAGS]
 
 Flags are reportedly generated dynamically when the target is reset, so
 the flags below will be different on each run.
 
-  local.txt   2c7434fc2ec10dfab3817484dbcbad91
+  **local.txt**:   2c7434fc2ec10dfab3817484dbcbad91  
   ----------- ----------------------------------
-  proof.txt   1fc03387f1637b56f534d5d01ea9e4ff
+  **proof.txt**:   1fc03387f1637b56f534d5d01ea9e4ff  
 
 # [Commands and Tools Used]{.ul}
 
-  **Name**                                                                      **Description**                                                                                                                                                                                                                                                             **How it was used**
-  ----------------------------------------------------------------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -----------------------------------------------------------------------------------------------------------------------------------------
-  [AutoRecon](https://github.com/Tib3rius/AutoRecon)                            AutoRecon is a multi-threaded network reconnaissance tool which performs automated enumeration of services. It is intended as a time-saving tool for use in CTFs and other penetration testing environments (e.g. OSCP). It may also be useful in real-world engagements.   Used to do the initial enumeration discovery of the target.
-  find                                                                          search for files in a directory hierarchy (Linux)                                                                                                                                                                                                                           Used to search for executables with the SUID bit enabled for privilege escalation as root.
-  [gobuster](https://github.com/OJ/gobuster)                                    URI and DNS Subdomains brute force tool                                                                                                                                                                                                                                     Used as part of the [AutoRecon](https://github.com/Tib3rius/AutoRecon) script to brute force potential files and directories at the URI
-  [Firefox](https://firefox.com)                                                Web browser                                                                                                                                                                                                                                                                 Used to view the web site served on the target
-  [php-reverse-shell.php](https://github.com/pentestmonkey/php-reverse-shell)   php based reverse shell                                                                                                                                                                                                                                                     Used to establish a shell to the target.
-  [searchsploit](https://www.exploit-db.com/searchsploit)                       local command line search script for exploit-db.com                                                                                                                                                                                                                         Used to obtain the privilege escalation exploit source code - 45010
-  [wpscan](https://wpscan.com)                                                  Wordpress Security Scanner                                                                                                                                                                                                                                                  Used to enumerate Wordpress settings and users. Also used to brute force logins.
+  |**Name**|**Description**|**How it was used**|
+  ---
+  |[AutoRecon](https://github.com/Tib3rius/AutoRecon) |                           AutoRecon is a multi-threaded network reconnaissance tool which performs automated enumeration of services. It is intended as a time-saving tool for use in CTFs and other penetration testing environments (e.g. OSCP). It may also be useful in real-world engagements.   |Used to do the initial enumeration discovery of the target.|
+  |find                                                                          |search for files in a directory hierarchy (Linux)|                                                                                                                                                                                                                          | Used to search for executables with the SUID bit enabled for privilege escalation as root.
+  |[gobuster](https://github.com/OJ/gobuster)|                                    URI and DNS Subdomains brute force tool                                                                                                                                                                                                                                     Used as part of the [AutoRecon](https://github.com/Tib3rius/AutoRecon) script to brute force potential files and directories at the URI
+  |[Firefox](https://firefox.com) |                                               Web browser|                                                                                                                                                                                                                                                                 Used to view the web site served on the target|
+  |[php-reverse-shell.php](https://github.com/pentestmonkey/php-reverse-shell) |  php based reverse shel|l                                                                                                                                                                                                                                                     Used to establish a shell to the target.|
+  |[searchsploit](https://www.exploit-db.com/searchsploit) |                      local command line search script for exploit-db.com|                                                                                                                                                                                                                         Used to obtain the privilege escalation exploit source code - 45010|
+  |[wpscan](https://wpscan.com) |                                                 Wordpress Security Scanner|                                                                                                                                                                                                                                                  Used to enumerate Wordpress settings and users. Also used to brute force logins.|
