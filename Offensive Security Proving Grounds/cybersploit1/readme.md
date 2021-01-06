@@ -87,7 +87,7 @@ Perhaps there's a kernel exploit we can use?  Let's find what version of Linux w
 
 We'll search on Exploit-db to see if there are any known privilege escalation vulnerabilities. 
 
-![](CyberSploit1.022.png)
+![](CyberSploit1.021.png)
 
 That third one looks like it may be useful.  We look through the code and download it to target. 
 
