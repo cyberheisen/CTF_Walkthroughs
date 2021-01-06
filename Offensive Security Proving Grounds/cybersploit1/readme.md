@@ -103,14 +103,16 @@ We browse to the root folder and we have found our flag.
 
 Cybersploit1 wasn’t a terribly difficult box, but it did lead me on a little goose chase early on with the encoded robots.txt file.  Having simply thought it was a plug for the author’s site, I spent most of the 2 hours it took to complete enumerating as much as I could trying to find a login point or a password.  Once I had exhausted all my options, only then did I try the decoded text with the username.   From there, it was an easy and straightforward privilege escalation.   Lesson learned: keep tabs of what you have and don’t overlook any possible combinations that may move you forward. 
 
-Many thanks to Cybersploit for his time putting this CTF together. 
+Many thanks to [Cybersploit](https://www.youtube.com/c/cybersploit) for his time putting this CTF together. 
 
 # FLAGS 
 
 Flags are reportedly generated dynamically when the target is reset, so the flags below will be different on each run. 
 
-### Local.txt  B378ae90622a2799c60d4515f1057c9f 
-### Proof.txt  29c9192e6787f6766277dab90fcc69d1 
+### Local.txt
+B378ae90622a2799c60d4515f1057c9f 
+### Proof.txt
+29c9192e6787f6766277dab90fcc69d1 
 
 # Commands and Tools Used 
 
