@@ -1,1 +1,140 @@
+﻿Target Information 
+
+
+
+|Date |01/04/2021 |
+| - | - |
+|Name |CyberSploit1 |
+|Difficulty |Easy |
+|Location |Offensive Security Proving Grounds |
+|Author |Cyberheisen |
+Obligatory Disclaimer 
+
+The tools and techniques described in this material are meant for educational purposes.  Their use on targets without obtaining prior consent is illegal and it is your responsibility to understand and follow any applicable local, state, and federal laws.  Any liability as a result of your actions are yours alone. 
+
+Any views and opinions expressed in this document are my own. 
+
+Walkthrough 
+
+We begin by executing AutoRecon , which will give us quick results to work with while continuing to run full scans in the background. 
+
+![](CyberSploit1.001.png)
+
+And will spin up a web server to give us easy access to all our files. 
+
+![](CyberSploit1.002.png)
+
+By running the webserver as a job and sending output to  /dev/null , we keep our terminal clear. With the webserver online, we now have quick access to our CTF files. 
+
+![](CyberSploit1.003.png)![](CyberSploit1.004.png)
+
+The initial port scan is complete.  Looks like we have two services: SSH and HTTP at 22 and 80, respectively.  Let's take a look at the web service. 
+
+![](CyberSploit1.005.png)![](CyberSploit1.006.png)
+
+The web page looks custom.  Let’s browse around and see if there’s anything useful to us. 
+
+![](CyberSploit1.007.png)![](CyberSploit1.008.png)
+
+I generally like to start by looking at the page source, especially when the site looks custom.  In this case, it’s a quick score as we find a commented Username: itsskv 
+
+![](CyberSploit1.009.png)![](CyberSploit1.010.png)
+
+None of the links on the page go anywhere. 
+
+AutoRecon  has completed, so let's take a look at the  gobuster results and see if any additional web directories were found.  Eyeing the list ![](CyberSploit1.011.png)for "Status: 200 " we see there’s a robots.txt file. 
+
+![](CyberSploit1.012.png)![](CyberSploit1.013.png)
+
+The robots.txt file was interesting as it contained what appeared to be a  base64 encoded string. 
+
+![](CyberSploit1.014.png)
+
+We attempt to decode it at the command line and it's successful. 
+
+![](CyberSploit1.015.png)We follow the YouTube link which takes us to the CTF author's YouTube page.  I poked around a little looking for clues, but it didn't seem like it was much more than a “plug” back to for his content. 
+
+![](CyberSploit1.016.png)
+
+I spent a bit more time poking around the box and hitting dead ends, so it’s time to summarize what we know: 
+
+- We have a username 
+- We have a link to a website that was encoded. 
+- There is an SSH server running 
+- We have not found any authentication web pages where we could use the username. 
+
+The only thing I can think of at this point is trying the username on the SSH service and the decoded text from the robots.txt file as the password.  Let's try it. 
+
+And it worked.  Seriously? 
+
+![](CyberSploit1.017.png)
+
+![](CyberSploit1.018.png)
+
+Ok, so we grab the local.txt flag.  Now we need to find the proof.txt file.  We're operating as  itsskv , which does not have access to root, so let's see if we can elevate our privileges. 
+
+A quick search of executables with the SUID bit enabled turns up nothing we can use. 
+
+![](CyberSploit1.019.png)
+
+Perhaps there's a kernel exploit we can use?  Let's find what version of Linux we're running.  It’s Ubuntu 12.04.5 LTS 
+
+![](CyberSploit1.020.png)
+
+We'll search on Exploit-db to see if there are any known privilege escalation vulnerabilities. 
+
+![](CyberSploit1.021.png)![](CyberSploit1.022.png)
+
+That third one looks like it may be useful.  We look through the code and download it to target. 
+
+Next, we compile the code locally and execute. Boom!  Looks like we have root. 
+
+![](CyberSploit1.023.png)
+
+We browse to the root folder and we have found our flag. 
+
+![](CyberSploit1.024.png)
+
+Vulnerabilities 
+
+1. Credentials available through publicly accessible web pages. 
+
+The username used to provide initial non-privileged access to the system was located in the source code of the web server’s index.html file.  Additionally, the password to the user, though not directly tied to the username in any way, was found in base64 encoded ciphertext in the robots.txt file.  While the password was obscured, it was easily reversed. 
+
+Recommendation:  Remove the username from the source code and change the password to something other than what was contained in the robots.txt file. 
+
+2. Kernel was vulnerable to ‘overlayfs’ Local Privilege Escalation. 
+
+The kernel version running on the target was vulnerable to a local privilege escalation vulnerability.  This vulnerability can only be exploited locally by an authenticated user.  Code is publicly available to exploit the vulnerability and is trivial to compile and execute.  The successful exploit provided root level access to the target. 
+
+Recommendation : Update the kernel to the latest available stable version. References: 
+
+- 2015-1328 
+- https://www.exploit-db.com/exploits/37292 
+
+Conclusion 
+
+Cybersploit1 wasn’t a terribly difficult box, but it did lead me on a little goose chase early on with the encoded robots.txt file.  Having simply thought it was a plug for the author’s site, I spent most of the 2 hours it took to complete enumerating as much as I could trying to find a login point or a password.  Once I had exhausted all my options, only then did I try the decoded text with the username.   From there, it was an easy and straightforward privilege escalation.   Lesson learned: keep tabs of what you have and don’t overlook any possible combinations that may move you forward. 
+
+Many thanks to Cybersploit for his time putting this CTF together. 
+
+FLAGS 
+
+Flags are reportedly generated dynamically when the target is reset, so the flags below will be different on each run. 
+
+Local.txt  B378ae90622a2799c60d4515f1057c9f ![](CyberSploit1.025.png)Proof.txt  29c9192e6787f6766277dab90fcc69d1 
+
+Commands and Tools Used 
+
+
+
+|Name |Description |How it was used |
+| - | - | - |
+|AutoRecon |AutoRecon is a multi- threaded network reconnaissance tool which performs automated enumeration of services. It is intended as a time-saving tool for use in CTFs and other penetration testing environments (e.g. OSCP). It may also be useful in real- world engagements. |Used to do the initial enumeration discovery of the target. |
+|base64 |Command line tool providing base64 encoding and decoding |Used to decode the ciphertext in the Robots.txt file. |
+|curl |Command line tool and library for transferring data with URL s|Used to download exploit code to target. |
+|find |search for files in a directory hierarchy (Linux) |Used to search for executables with the SUID bit enabled for privilege escalation as root. |
+|gobuster |URI and DNS Subdomains brute force tool |Used as part of the AutoRecon script to brute force potential files and directories at the URI, |
+|ssh |Secure Shell |Used to log into the target |
+|Firefox |Web browser |Used to view the web site served on the target |
 
