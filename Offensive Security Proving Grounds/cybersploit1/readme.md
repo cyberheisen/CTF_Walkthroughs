@@ -112,11 +112,11 @@ B378ae90622a2799c60d4515f1057c9f
 
 |Name |Description |How it was used |
 | - | - | - |
-|AutoRecon |AutoRecon is a multi- threaded network reconnaissance tool which performs automated enumeration of services. It is intended as a time-saving tool for use in CTFs and other penetration testing environments (e.g. OSCP). It may also be useful in real- world engagements. |Used to do the initial enumeration discovery of the target. |
+|[AutoRecon](https://github.com/Tib3rius/AutoRecon) |AutoRecon is a multi- threaded network reconnaissance tool which performs automated enumeration of services. It is intended as a time-saving tool for use in CTFs and other penetration testing environments (e.g. OSCP). It may also be useful in real- world engagements. |Used to do the initial enumeration discovery of the target. |
 |base64 |Command line tool providing base64 encoding and decoding |Used to decode the ciphertext in the Robots.txt file. |
-|curl |Command line tool and library for transferring data with URL s|Used to download exploit code to target. |
+|[curl](https://curl.se/) |Command line tool and library for transferring data with URL s|Used to download exploit code to target. |
 |find |search for files in a directory hierarchy (Linux) |Used to search for executables with the SUID bit enabled for privilege escalation as root. |
-|gobuster |URI and DNS Subdomains brute force tool |Used as part of the AutoRecon script to brute force potential files and directories at the URI, |
+|[gobuster](https://github.com/OJ/gobuster) |URI and DNS Subdomains brute force tool |Used as part of the AutoRecon script to brute force potential files and directories at the URI, |
 |ssh |Secure Shell |Used to log into the target |
-|Firefox |Web browser |Used to view the web site served on the target |
+|[Firefox](https://www.mozilla.org/en-US/firefox/new/?redirect_source=firefox-com) |Web browser |Used to view the web site served on the target |
 
