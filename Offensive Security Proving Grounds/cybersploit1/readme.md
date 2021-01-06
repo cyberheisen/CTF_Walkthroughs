@@ -1,20 +1,18 @@
-﻿Target Information 
 
-
+Target Information 
 
 |Date |01/04/2021 |
-| - | - |
 |Name |CyberSploit1 |
 |Difficulty |Easy |
 |Location |Offensive Security Proving Grounds |
 |Author |Cyberheisen |
-Obligatory Disclaimer 
+# Obligatory Disclaimer 
 
 The tools and techniques described in this material are meant for educational purposes.  Their use on targets without obtaining prior consent is illegal and it is your responsibility to understand and follow any applicable local, state, and federal laws.  Any liability as a result of your actions are yours alone. 
 
 Any views and opinions expressed in this document are my own. 
 
-Walkthrough 
+# Walkthrough 
 
 We begin by executing AutoRecon , which will give us quick results to work with while continuing to run full scans in the background. 
 
@@ -95,38 +93,20 @@ We browse to the root folder and we have found our flag.
 
 ![](CyberSploit1.024.png)
 
-Vulnerabilities 
-
-1. Credentials available through publicly accessible web pages. 
-
-The username used to provide initial non-privileged access to the system was located in the source code of the web server’s index.html file.  Additionally, the password to the user, though not directly tied to the username in any way, was found in base64 encoded ciphertext in the robots.txt file.  While the password was obscured, it was easily reversed. 
-
-Recommendation:  Remove the username from the source code and change the password to something other than what was contained in the robots.txt file. 
-
-2. Kernel was vulnerable to ‘overlayfs’ Local Privilege Escalation. 
-
-The kernel version running on the target was vulnerable to a local privilege escalation vulnerability.  This vulnerability can only be exploited locally by an authenticated user.  Code is publicly available to exploit the vulnerability and is trivial to compile and execute.  The successful exploit provided root level access to the target. 
-
-Recommendation : Update the kernel to the latest available stable version. References: 
-
-- 2015-1328 
-- https://www.exploit-db.com/exploits/37292 
-
-Conclusion 
+# Conclusion 
 
 Cybersploit1 wasn’t a terribly difficult box, but it did lead me on a little goose chase early on with the encoded robots.txt file.  Having simply thought it was a plug for the author’s site, I spent most of the 2 hours it took to complete enumerating as much as I could trying to find a login point or a password.  Once I had exhausted all my options, only then did I try the decoded text with the username.   From there, it was an easy and straightforward privilege escalation.   Lesson learned: keep tabs of what you have and don’t overlook any possible combinations that may move you forward. 
 
 Many thanks to Cybersploit for his time putting this CTF together. 
 
-FLAGS 
+# FLAGS 
 
 Flags are reportedly generated dynamically when the target is reset, so the flags below will be different on each run. 
 
-Local.txt  B378ae90622a2799c60d4515f1057c9f ![](CyberSploit1.025.png)Proof.txt  29c9192e6787f6766277dab90fcc69d1 
+### Local.txt  B378ae90622a2799c60d4515f1057c9f 
+### Proof.txt  29c9192e6787f6766277dab90fcc69d1 
 
-Commands and Tools Used 
-
-
+# Commands and Tools Used 
 
 |Name |Description |How it was used |
 | - | - | - |
