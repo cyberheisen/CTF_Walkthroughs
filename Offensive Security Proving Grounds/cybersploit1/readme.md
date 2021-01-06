@@ -1,16 +1,11 @@
 
 #Target Information 
 
-### Date:
-01/04/2021  
-### Name: 
-CyberSploit1  
-### Difficulty:
-Easy  
-### Location:
-Offensive Security Proving Grounds/Vulnhb
-### Author:
-[@Cyberheisen](https://www.twitter.com/cyberheisen)    
+### Date|01/04/2021  
+### Name|CyberSploit1  
+### Difficulty|Easy  
+### Location|Offensive Security Proving Grounds/Vulnhb
+### Completed|[@Cyberheisen](https://www.twitter.com/cyberheisen)    
 
 # Obligatory Disclaimer 
 
