@@ -1,6 +1,5 @@
 
-#Target Information 
-
+# Target Information   
 ### Date|01/04/2021  
 ### Name|CyberSploit1  
 ### Difficulty|Easy  
