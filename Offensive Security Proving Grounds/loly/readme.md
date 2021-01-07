@@ -26,8 +26,8 @@ Anything good on gobuster?
 
 ![](images/image2.png)
 
-If we go to /wordpress, we find a WordPress site, but the links don\'t
-work as it points to a domain name loly.lc, rather than the ip address.
+If we go to `/wordpress`, we find a WordPress site, but the links don\'t
+work since it points to a domain name `loly.lc`, rather than the ip address.
 
 
  
@@ -39,7 +39,7 @@ work as it points to a domain name loly.lc, rather than the ip address.
 
 We can easily fix that by entering a static hostname entry in our hosts
 file. We make a copy of our original host first, make the change, and
-then put the updated hosts file back in /etc
+then put the updated hosts file back in `/etc`
 
 
  
@@ -61,11 +61,11 @@ Now we have a working website.
 ![](images/image6.png)
 
 
-First thing we do is head over to /wp-admin and try logging in with the
+First thing we do is head over to `/wp-admin` and try logging in with the
 default WordPress credentials. It fails, but hey... we tried!
  
 
-The WordPress site looks default. We can run wpscan to look for any
+The WordPress site looks default. We can run `wpscan` to look for any
 vulnerabilities or configuration issues we can leverage.
  
 
@@ -86,7 +86,7 @@ researching it a bit, it didn\'t seem feasible.
  
 
 Next step, let\'s try to enumerate users. We do this with the
-\--enumerate u argument.
+`\--enumerate u` argument.
 
  
 
@@ -98,7 +98,7 @@ Next step, let\'s try to enumerate users. We do this with the
 
  
 
-We found a user: loly!
+We found a user: `loly!`
  
 
 
@@ -113,7 +113,7 @@ Now lets run a password brute force attack against Wordpress.
 ![](images/image11.png)
 
 
-We found a valid password: fernando
+We found a valid password:` fernando`
 
 ![](images/image12.png)
 
@@ -155,10 +155,10 @@ that may be helpful.
 It won\'t accept php, but it will accept zip, and the zip files are
 automatically extracted. Let\'s see if we can upload a php shell.
 
-We\'re going to try the php-reverse-shell.php file, located in
-/usr/share/webshells/php folder in the kali distribution.
+We\'re going to try the `php-reverse-shell.php` file, located in
+`/usr/share/webshells/php` folder in the kali distribution.
 
-We update the php-reverse-shell.php code with our IP address.
+We update the `php-reverse-shell.php` code with our IP address.
 
 
  
@@ -181,7 +181,7 @@ And we zip and upload.
 
 Let\'s get a listener going and try to grab the shell.
 
-The file would have been uploaded to /wordpress/wp-content/banners/ as
+The file would have been uploaded to `/wordpress/wp-content/banners/` as
 per the AdRotate settings.
 
 
@@ -209,7 +209,7 @@ And we have a shell!
 ![](images/image20.png)
 
 
-Grabbed the local.txt
+Grabbed the `local.txt`
 
 
  
@@ -260,7 +260,7 @@ Let\'s see if our kernel is vulnerable...
 
 Ubuntu 16.04.1 running Kernel 4.4.0-31.
 
-A quick search on exploit-db.com leads me to CVE-2017-16995 -- Local
+A quick search on exploit-db.com leads me to **CVE-2017-16995** -- Local
 Privilege Escalation for Linux Kernel \< 4.13.9 Tested on Ubuntu 16.04.
 
 We download and compile it. We'll use the same file upload method we
