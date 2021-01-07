@@ -1,10 +1,10 @@
 # Target Information
 
-  **Date**         01/05/2021
-  **Name**         FunboxRookie
-  **Difficulty**   Easy
-  **Location**     [Offensive Security Proving Grounds](https://www.offensive-security.com/labs/)
-  **Author**       [Cyberheisen](https://www.twitter.com/cyberheisen)
+  **Date**         01/05/2021  
+  **Name**         FunboxRookie  
+  **Difficulty**   Easy  
+  **Location**     [Offensive Security Proving Grounds](https://www.offensive-security.com/labs/)  
+  **Author**       [Cyberheisen](https://www.twitter.com/cyberheisen)  
 
 # [Obligatory Disclaimer]
 
