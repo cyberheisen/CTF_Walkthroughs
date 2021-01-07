@@ -199,7 +199,6 @@ Flags are reportedly generated dynamically when the target is reset, so
 the flags below will be different on each run.
 
   **local.txt**:   2c7434fc2ec10dfab3817484dbcbad91  
-  ----------- ----------------------------------
   **proof.txt**:   1fc03387f1637b56f534d5d01ea9e4ff  
 
 # [Commands and Tools Used]
