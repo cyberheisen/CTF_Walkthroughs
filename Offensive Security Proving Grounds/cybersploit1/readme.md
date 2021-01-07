@@ -16,43 +16,43 @@ Any views and opinions expressed in this document are my own.
 
 We begin by executing AutoRecon , which will give us quick results to work with while continuing to run full scans in the background. 
 
-![](CyberSploit1.001.png)
+![](images/CyberSploit1.001.png)
 
 And will spin up a web server to give us easy access to all our files. 
 
-![](CyberSploit1.002.png)
+![](images/CyberSploit1.002.png)
 
 By running the webserver as a job and sending output to  /dev/null , we keep our terminal clear. With the webserver online, we now have quick access to our CTF files. 
 
-![](CyberSploit1.004.png)
+![](images/CyberSploit1.004.png)
 
 The initial port scan is complete.  Looks like we have two services: SSH and HTTP at 22 and 80, respectively.  Let's take a look at the web service. 
 
-![](CyberSploit1.006.png)
+![](images/CyberSploit1.006.png)
 
 The web page looks custom.  Let’s browse around and see if there’s anything useful to us. 
 
-![](CyberSploit1.008.png)
+![](images/CyberSploit1.008.png)
 
 I generally like to start by looking at the page source, especially when the site looks custom.  In this case, it’s a quick score as we find a commented Username: itsskv 
 
-![](CyberSploit1.010.png)
+![](images/CyberSploit1.010.png)
 
 None of the links on the page go anywhere. 
 
 AutoRecon  has completed, so let's take a look at the  gobuster results and see if any additional web directories were found.  Eyeing the list ![](CyberSploit1.011.png)for "Status: 200 " we see there’s a robots.txt file. 
 
-![](CyberSploit1.013.png)
+![](images/CyberSploit1.013.png)
 
 The robots.txt file was interesting as it contained what appeared to be a  base64 encoded string. 
 
-![](CyberSploit1.014.png)
+![](images/CyberSploit1.014.png)
 
 We attempt to decode it at the command line and it's successful. 
 
-![](CyberSploit1.015.png)We follow the YouTube link which takes us to the CTF author's YouTube page.  I poked around a little looking for clues, but it didn't seem like it was much more than a “plug” back to for his content. 
+![](images/CyberSploit1.015.png)We follow the YouTube link which takes us to the CTF author's YouTube page.  I poked around a little looking for clues, but it didn't seem like it was much more than a “plug” back to for his content. 
 
-![](CyberSploit1.016.png)
+![](images/CyberSploit1.016.png)
 
 I spent a bit more time poking around the box and hitting dead ends, so it’s time to summarize what we know: 
 
@@ -65,33 +65,33 @@ The only thing I can think of at this point is trying the username on the SSH se
 
 And it worked.  Seriously? 
 
-![](CyberSploit1.017.png)
+![](images/CyberSploit1.017.png)
 
-![](CyberSploit1.018.png)
+![](images/CyberSploit1.018.png)
 
 Ok, so we grab the local.txt flag.  Now we need to find the proof.txt file.  We're operating as  itsskv , which does not have access to root, so let's see if we can elevate our privileges. 
 
 A quick search of executables with the SUID bit enabled turns up nothing we can use. 
 
-![](CyberSploit1.019.png)
+![](images/CyberSploit1.019.png)
 
 Perhaps there's a kernel exploit we can use?  Let's find what version of Linux we're running.  It’s Ubuntu 12.04.5 LTS 
 
-![](CyberSploit1.020.png)
+![](images/CyberSploit1.020.png)
 
 We'll search on Exploit-db to see if there are any known privilege escalation vulnerabilities. 
 
-![](CyberSploit1.021.png)
+![](images/CyberSploit1.021.png)
 
 That third one looks like it may be useful.  We look through the code and download it to target. 
 
 Next, we compile the code locally and execute. Boom!  Looks like we have root. 
 
-![](CyberSploit1.023.png)
+![](images/CyberSploit1.023.png)
 
 We browse to the root folder and we have found our flag. 
 
-![](CyberSploit1.024.png)
+![](images/CyberSploit1.024.png)
 
 # Conclusion 
 
