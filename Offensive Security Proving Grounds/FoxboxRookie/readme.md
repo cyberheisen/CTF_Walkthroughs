@@ -21,7 +21,7 @@ Any views and opinions expressed in this document are my own.
 We start with our AutoRecon scans, specifically we want to get the quick
 TCP results
 
-![](images\image1.png)
+![](images/image1.png)
 
  
 
@@ -31,13 +31,13 @@ configuration. We\'ll try logging in as anonymous.
 
  
 
-![](images\image2.png)
+![](images/image2.png)
 
  
 
 Anonymous access is permitted and we\'re in.
 
-![](images\image3.jpeg)
+![](images/image3.jpeg)
 
  
 
@@ -47,7 +47,7 @@ Great Scott! Look at all those zip files! Let\'s pull them down.
 
  
 
-![](images\image4.png)
+![](images/image4.png)
 
  
 
@@ -72,26 +72,26 @@ and see what we have.
 
  
 
-![](images\image5.png)
+![](images/image5.png)
 
  
 
 Ok, nothing in the msg file - just the FTP banner message we saw
 earlier.
 
-![](images\image6.png)
+![](images/image6.png)
 
  Looks like the files are password protected.
 
  
 
-![](images\image7.png)
+![](images/image7.png)
 
 Let\'s pause there for a moment and look at the web port.
 
  
 
-![](images\image8.png)
+![](images/image8.png)
 
  
 
@@ -104,7 +104,7 @@ at the results.
 
  
 
-![](images\image9.png)
+![](images/image9.png)
 
 We\'re interested in any status:200 messages. Nothing extraordinary
 here. The robots.txt file has a single line telling the search engines
@@ -122,7 +122,7 @@ a known vulnerability we can dig into?
 
  
 
-![](images\image10.png)
+![](images/image10.png)
 
 The \'mod_copy\' remote command execution looks like what we would need.
 There\'s a Metasploit module available, but we\'re going to try and do
@@ -134,7 +134,7 @@ and a command. Let\'s see if we can get it to work.
 
  
 
-![](images\image11.png)}
+![](images/image11.png)}
 
  
 
@@ -147,7 +147,7 @@ target.
 
  Let's download and try running it.
 
-![](images\image12.png)
+![](images/image12.png)
 
  
 
@@ -156,7 +156,7 @@ the script. It\'s a no-go.
 
  
 
-![](images\image13.png)
+![](images/image13.png)
 
  
 
@@ -166,7 +166,7 @@ vulnerable by running the commands manually and reviewing the output.
 
  
 
-![](images\image14.png)
+![](images/image14.png)
 
  
 
@@ -214,7 +214,7 @@ done \# this is the end of the loop
 
  
 
-![](images\image15.png)
+![](images/image15.png)
 
 >  
 
@@ -225,14 +225,14 @@ passwords in a short time frame.
 
  
 
-![](images\image16.png)
+![](images/image16.png)
 
 We have a password! Heading the "Warning", we'll double check with the
 \--show command as suggested.
 
  
 
-![](images\image17.png)
+![](images/image17.png)
 
  
 
@@ -240,13 +240,13 @@ Oh! We have 2 passwords! Ok, let\'s see what\'s in the archives!
 
  
 
-![](images\image18.png)
+![](images/image18.png)
 
  
 
  
 
-![](images\image19.png)
+![](images/image19.png)
 
  
 
@@ -257,7 +257,7 @@ SSH.
 
  
 
-![](images\image20.png)
+![](images/image20.png)
 
  
 
@@ -268,7 +268,7 @@ Cathrine\'s login was a no-go, but Tom\'s was successful!
 And in Tom's home directory, we find the local.txt:
 
 
-![](images\image21.png)
+![](images/image21.png)
 
  
 
@@ -283,18 +283,18 @@ change directories. We're likely stuck in a restricted shell.
 
  
 
-![](images\image22.png)
+![](images/image22.png)
 
  
 
 A check for SUIDs (find . -perm /4000) didn\'t turn up anything useful.
 
-![](images\image23.png)
+![](images/image23.png)
  
 
 What version of Linux are we running?
 
-![](images\image24.png)
+![](images/image24.png)
 
  
 
@@ -302,7 +302,7 @@ A quick search on exploit-db produces one privilege escalation exploit.
 
  
 
-![](images\image25.png)
+![](images/image25.png)
 
 The code didn\'t really explain what was happening, so I did a quick
 Google search on \'lxd privilege escalation\" and found an
@@ -317,7 +317,7 @@ Let\'s see who is in our target machine\'s \'lxd\' group
 
  
 
-![](images\image26.png)
+![](images/image26.png)
 
  
 
@@ -330,26 +330,26 @@ Let\'s see if we can get the exploit to work.
 
  
 
-![](images\image27.png)
+![](images/image27.png)
 
  
 
  
 
-![](images\image28.png)
+![](images/image28.png)
 
  
 
 We end up with a tar.gz file that we need to transfer over to the target
 machine along with the bash script.
 
-![](images\image29.png)
+![](images/image29.png)
 
  
 
 I tried to run the script, but the restricted shell kicked it back.
 
-![](images\image30.png)
+![](images/image30.png)
  
 
 We need to get rid of the restricted shell. Let\'s try executing a new
@@ -357,7 +357,7 @@ shell and if we\'re lucky...\...
 
  
 
-![](images\image31.png)
+![](images/image31.png)
 
  
 
@@ -369,7 +369,7 @@ Now to run the script.
 
  
 
-![](images\image32.png)
+![](images/image32.png)
 
  
 
@@ -379,7 +379,7 @@ it.
 
  
 
-![](images\image33.png)
+![](images/image33.png)
 
  
 
@@ -389,7 +389,7 @@ part of the command and we should be good.
 
  
 
-![](images\image34.png)
+![](images/image34.png)
 
  
 
@@ -397,7 +397,7 @@ We have root. Let\'s grab the proof.txt
 
  
 
-![](images\image35.png)
+![](images/image35.png)
 
 
 # [Conclusion]

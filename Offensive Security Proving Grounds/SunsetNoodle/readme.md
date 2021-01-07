@@ -1,10 +1,10 @@
 # Target Information
 
-  **Date**:        01/05/2021
-  **Name**:         SunsetNoontide
-  **Difficulty**:   Easy
-  **Location**:     [Offensive Security Proving Grounds](https://www.offensive-security.com/labs/)
-  **Author**:       [Cyberheisen](https://www.twitter.com/cyberheisen)
+  **Date**:        01/05/2021  
+  **Name**:         SunsetNoontide  
+  **Difficulty**:   Easy  
+  **Location**:     [Offensive Security Proving Grounds](https://www.offensive-security.com/labs/)  
+  **Author**:       [Cyberheisen](https://www.twitter.com/cyberheisen)  
 
 # [Obligatory Disclaimer]
 
@@ -23,13 +23,13 @@ single port running - IRC at 6667
 
  
 
-![](images\image1.png)
+![](images/image1.png)
 Let\'s see if there are any nmap scripts we could run to get more
 information.
 
  
 
-![](images\image2.png)
+![](images/image2.png)
 
  
 
@@ -38,7 +38,7 @@ use.
 
  
 
-![](images\image3.png)
+![](images/image3.png)
  
 
 Groovy! Let\'s check the link and read the details. Here\'s the
@@ -46,7 +46,7 @@ important information.
 
  
 
-![](images\image4.png)
+![](images/image4.png)
 
  
 
@@ -55,7 +55,7 @@ a code snippet, which was pulled from the very nmap script we ran.
 
  
 
-![](images\image5.png)
+![](images/image5.png)
  
 
 Let\'s try running it like it shows in the script.
@@ -71,7 +71,7 @@ http. Let's launch the listener.
 
  
 
-![](images\image6.png)
+![](images/image6.png)
 
  
 
@@ -82,7 +82,7 @@ go with that.
 
  
 
-![](images\image7.png)
+![](images/image7.png)
 
  
 
@@ -92,7 +92,7 @@ in that folder and instruct the target to download it.
 
  
 
-![](images\image8.png)
+![](images/image8.png)
  
 
 Let\'s breakdown the nmap command:
@@ -111,7 +111,7 @@ executable, and then connect back to our netcat listener.
 
  
 
-![](images\image9.png)
+![](images/image9.png)
  
 
 Lots of scrolling text, but the reverse shell didn\'t work. No hits on
@@ -127,28 +127,28 @@ available on the target machine. Let\'s give it a go.
 
  
 
-![](images\image10.png)
+![](images/image10.png)
  
 
 This time it works, and we have a shell.
 
  
 
-![](images\image11.png)
+![](images/image11.png)
  
 
  
 
 Here's the `local.txt`
 
-![](images\image12.png)
+![](images/image12.png)
 
   
 
 Unfortunately, it\'s a lousy non-interactive terminal. The python shell
 upgrade trick didn\'t work....
 
-![](images\image13.png)
+![](images/image13.png)
 
  
 
@@ -156,7 +156,7 @@ So let\'s try another method.
 
  
 
-![](images\image14.png)
+![](images/image14.png)
 
  
 
@@ -172,7 +172,7 @@ SUIDs are a no-go.
 
  
 
-![](images\image15.png)
+![](images/image15.png)
 
  
 
@@ -195,19 +195,19 @@ Maybe we can guess the password?
 
  
 
-![](images\image16.png)
+![](images/image16.png)
 
  
 
 First try...
 
-![](images\image17.jpeg)
+![](images/image17.jpeg)
 
  
 
  Let's grab our `proof.txt` and we're done.
 
-![](images\image18.png)
+![](images/image18.png)
 
 
 # [Conclusion]
