@@ -38,7 +38,7 @@ work as it points to a domain name loly.lc, rather than the ip address.
 
  
 
-![](images\image3.png)
+![](images/image3.png)
 
  
 
@@ -48,9 +48,9 @@ then put the updated hosts file back in /etc
 
  
 
-![](images\image4.png)
+![](images/image4.png)
 
-![](images\image5.png)
+![](images/image5.png)
 
  
 
@@ -60,7 +60,7 @@ Now we have a working website.
 
  
 
-![](images\image6.png)
+![](images/image6.png)
 
  
 
@@ -76,7 +76,7 @@ vulnerabilities or configuration issues we can leverage.
 
  
 
-![](images\image7.png)
+![](images/image7.png)
 
  
 
@@ -85,7 +85,7 @@ vulnerabilities. Let\'s see if we can use any of those.
 
  
 
-![](images\image8.png)
+![](images/image8.png)
 
  
 
@@ -99,7 +99,7 @@ Next step, let\'s try to enumerate users. We do this with the
 
  
 
-![](images\image9.png)
+![](images/image9.png)
 
  
 
@@ -107,7 +107,7 @@ We found a user: loly!
 
  
 
-![](images\image10.png)
+![](images/image10.png)
 
  
 
@@ -115,7 +115,7 @@ Now lets run a password brute force attack against Wordpress.
 
  
 
-![](images\image11.png)
+![](images/image11.png)
 
  
 
@@ -123,7 +123,7 @@ Now lets run a password brute force attack against Wordpress.
 
  
 
-![](images\image12.png)
+![](images/image12.png)
 
  
 
@@ -132,7 +132,7 @@ we\'re in!
 
  
 
-![](images\image13.png)
+![](images/image13.png)
 
  
 
@@ -148,7 +148,7 @@ anything there.
 
  
 
-![](images\image14.png)
+![](images/image14.png)
 
  
 
@@ -157,7 +157,7 @@ that may be helpful.
 
  
 
-![](images\image15.png)
+![](images/image15.png)
 
  
 
@@ -173,7 +173,7 @@ We update the php-reverse-shell.php code with our IP address.
 
  
 
-![](images\image16.png)
+![](images/image16.png)
 
  
 
@@ -183,7 +183,7 @@ And we zip and upload.
 
  
 
-![](images\image17.png)
+![](images/image17.png)
 
  
 
@@ -196,7 +196,7 @@ per the AdRotate settings.
 
  
 
-![](images\image18.png)
+![](images/image18.png)
 
  
 
@@ -206,7 +206,7 @@ We hit the url
 
  
 
-![](images\image19.png)
+![](images/image19.png)
 
  
 
@@ -216,7 +216,7 @@ And we have a shell!
 
  
 
-![](images\image20.png)
+![](images/image20.png)
 
  
 
@@ -224,7 +224,7 @@ Grabbed the local.txt
 
  
 
-![](images\image21.png)
+![](images/image21.png)
 
  
 
@@ -233,7 +233,7 @@ upgrade it.
 
  
 
-![](images\image22.png)
+![](images/image22.png)
 
  
 
@@ -245,7 +245,7 @@ Nope.
 
  
 
-![](images\image23.png)
+![](images/image23.png)
 
  
 
@@ -253,11 +253,11 @@ Let\'s see if our kernel is vulnerable...
 
  
 
-![](images\image24.png)
+![](images/image24.png)
 
  
 
-![](images\image25.png)
+![](images/image25.png)
 
  
 
@@ -273,23 +273,23 @@ used to upload our shell, so we need to zip the exploit. 
 
  
 
-![](images\image26.png)
+![](images/image26.png)
 
  
 
-![](images\image27.png)
+![](images/image27.png)
 
  
 
  Now that we have it on the server, we'll make it executable and run it.
 
-![](images\image28.png)
+![](images/image28.png)
 
 We have a shell and root!
 
  
 
-![](images\image29.png)
+![](images/image29.png)
 
  
 
