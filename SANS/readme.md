@@ -4,8 +4,7 @@ Completed Objectives Report
 
 12/30/2020
 
-# Contents {#contents .TOC-Heading}
-
+# Contents
 [Introduction 1](#introduction)
 
 [Completed Objective Results 1](#completed-objective-results)
