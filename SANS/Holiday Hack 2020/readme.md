@@ -81,7 +81,7 @@ mountain for advice.
 Turnpike 7A exit. Our task was to reconstruct the image to identify the
 gift for Josh Wright.
 
-![](images\image1.png)
+![](images/image1.png)
 
 Figure 1.The billboard at Exit 7A.
 
@@ -95,7 +95,7 @@ It was not a clean revert, but through multiple manipulations we were
 able to make out enough of the text to get our answer. Josh Wright is
 getting a Proxmark.
 
-![](images\image2.png)
+![](images/image2.png)
 
 Figure 2.The words \'Wright\' and \'Proxmark\' can be made out after
 manipulating the image in the affected area.
@@ -116,11 +116,11 @@ software. It's stored on an Amazon S3 bucket and we are provided with
 the bucket_finder.rb Ruby script that searches publicly accessible S3
 buckets using a wordlist.
 
-![](images\image3.png)
+![](images/image3.png)
 
 Figure 3. Shinny Upatree and the Investigate S3 Bucket terminal.
 
-![](images\image4.png)
+![](images/image4.png)
 Figure 4. The \'welcome\' message at the \"Investigate S3 Bucket\"
 terminal
 
@@ -128,7 +128,7 @@ The initial run of the script with the default wordlist returned
 multiple buckets, however all were secured and not accessible to us. The
 file must be in another bucket.
 
-![](images\image5.png)
+![](images/image5.png)
 
 Figure 5. Multiple buckets found, but access was denied.
 
@@ -137,7 +137,7 @@ santa. Given the name of the software in question, we added wrapper3000
 to the list and executed the script again. This time, we find an open S3
 bucket at http://s3.amazonaws.com/wrapper30000/package.
 
-![](images\image6.png)
+![](images/image6.png)
 
 Figure 6. Executing the script with the updated wordlist containing
 \'wrapper3000\'. The open s3 bucket is found at
@@ -151,14 +151,14 @@ To determine the filetype, we execute 'file data', which returns with
 'ASCII text, very long lines'. Viewing the file contents, we see what
 appears to be BASE64 encoded text.
 
-![](images\image7.png)
+![](images/image7.png)
 
 Figure 7. Downloading and identifying the file type.
 
 Decoding using base64 and re-executing the 'file' command we learn it's
 a Zip archive.
 
-![](images\image8.png)
+![](images/image8.png)
 
 Figure 8. The decoded data file is a Zip archive.
 
@@ -170,7 +170,7 @@ identification and decompression until we were left with a final text
 file which contained the answer to complete the objective: "North Pole:
 The Frostiest Place on Earth"
 
-![](images\image9.png)
+![](images/image9.png)
 
 Figure 9. After multiple decompressions, we arrive at our answer.
 
@@ -189,17 +189,17 @@ because we *never, EVER,* execute, open, or analyze unknown files on
 production machines.
 
 ![mean girls - IT\'S NEVER GONNA
-HAPPEN](images\image10.jpeg)
+HAPPEN](images/image10.jpeg)
 
 The downloaded file was an executable called 'santa-shop.exe' and
 executing the file unpacked and installed the software onto our Windows
 10 dev machine.
 
-![](images\image11.png)
+![](images/image11.png)
 
 Figure 10. Sugarplum Mary and the Santa Shop terminal.
 
-![](images\image12.png)
+![](images/image12.png)
 
 Figure 11. Santa-Shop installed and executed on the Windows 10 dev
 machine.
@@ -214,11 +214,11 @@ file located at
 '\<user\>\\AppData\\Local\\Programs\\santa-shop\\resources' that
 contained our answer: 'santapass'.
 
-![](images\image13.png)
+![](images/image13.png)
 
 Figure 12. app.txt file containing the supervisor password.
 
-![](images\image14.png)
+![](images/image14.png)
 
 Figure 13. Unlocked Point of Sale system. The North Pole sales tax is
 quite steep!
@@ -230,7 +230,7 @@ quite steep!
 *Description:* Talk to Pepper Minstix in the entryway to get some hints
 about the Santavator.
 
-*Answer:* ![](images\image15.png)
+*Answer:* ![](images/image15.png)
 
 *Method:* By exploring the different rooms in the castle, we were able
 to pick-up multiple parts that would be used to divert the 'magic dust'
@@ -241,7 +241,7 @@ missing button was found in the "unpreparedness room" after unlocking
 the door by completing the "Speaker UNPrep task at Bushy Evergreen's
 terminal on the Talks floor.
 
-![](images\image16.png)
+![](images/image16.png)
 
 Figure 14. The Santavator panel's starting state.
 
@@ -249,14 +249,14 @@ Arriving at the solution was an exercise in **trial and error**.
 
 ![Trial and error? Ain\'t nobody got time fo that - Ain\'t Nobody got
 time fo that \| Meme
-Generator](images\image17.jpeg)
+Generator](images/image17.jpeg)
 
 
 The different receptacles required different amounts of magic dust to
 light up making our objective funneling just enough magic into the three
 separate receptacles to operate all the floors.
 
-![](images\image18.png)
+![](images/image18.png)
 
 
 Figure 15. The Santavator Reference Key.
@@ -280,7 +280,7 @@ panel completely.
 
 ![Image result for frustrated meme \| Funny dog memes, Cute funny
 animals, Funny animal
-pictures](images\image19.jpeg)
+pictures](images/image19.jpeg)
 
 
 ## Open HID Lock
@@ -298,12 +298,12 @@ it and enter the room.
 *Method:* While exploring we came across a Proxmark3 device which we
 were able to access via our inventory.
 
-![](images\image20.png)
+![](images/image20.png)
 
 
 Figure 16. Proxmark3 Device.
 
-![](images\image21.png)
+![](images/image21.png)
 
 
 Figure 17. The Proxmark3 CLI.
@@ -313,7 +313,7 @@ card reader. The room was easy to miss when entering the room --
 especially given the crowd of avatars parked next to it, but as you
 moved closer, the camera would pivot slightly giving a cleaner view.
 
-![](images\image22.png)
+![](images/image22.png)
 
 
 Figure 18. Locked door in workshop. This screenshot was taken after the
@@ -338,7 +338,7 @@ were able to enter the room, which acted as a portal which allowed us to
 pass through the portrait of Santa in the entry and take control of
 Santa Claus.
 
-![](images\image23.png)
+![](images/image23.png)
 
 
 Figure 19. Bow Ninecandle standing outside the Talk Rooms -- doing
@@ -346,24 +346,24 @@ nothing but waiting for his badge to be cloned.
 
 ![magicdust\] pm3 If hid read TAG ID: 2ee6e22føe (6823) magicdust\] pm3
 Format Len: 26 bit FC: 113 Card • . 6e23
-](images\image24.png)
+](images/image24.png)
 
 Figure 20. Reading Bow Ninecandle\'s HID card.
 
-![](images\image25.png)
+![](images/image25.png)
 
 
 Figure 21. Simulating Bow NineCandle\'s HID card at the HID secured
 door.
 
-![](images\image26.png)
+![](images/image26.png)
 
 
 Figure 22. The creepy Santa Portrait hanging in the entry signed by
 J.F.S. Wonder who that could be? Also, Santa has an uncanny likeness to
 SANS Ed Skoudis.
 
-![](images\image27.png)
+![](images/image27.png)
 
 
 Figure 23. We now control Santa!
@@ -542,7 +542,7 @@ mentioning the text was encrypted with an old algorithm that uses a key.
 A reference to RFC 7465 [^11]was made which references the RC4 Cipher.
 For the key, we are told that it was used in the Splunk talk[^12].
 
-![](images\image28.png)
+![](images/image28.png)
 
 
 Figure 24. Message from Alice Bluebird providing Ciphertext and clues
@@ -550,7 +550,7 @@ Figure 24. Message from Alice Bluebird providing Ciphertext and clues
 We viewed the Splunk talk and at 18:29, the speaker presents "The most
 important slide" containing a possible password: "Stay Frosty"
 
-![](images\image29.png)
+![](images/image29.png)
 
 
 Figure 25. Santa\'s favorite saying\...
@@ -563,7 +563,7 @@ Doing an initial Base64 decode followed by an RC4 decode using "Stay
 Frosty" as our key, we are able to fully decode the adversary name: "The
 Lollipop Guild."
 
-![](images\image30.png)
+![](images/image30.png)
 
 
 Figure 26. Base64 Decode followed by RC4 decode using our key
@@ -597,7 +597,7 @@ functions: Acceleration, Braking, Steering, Start, Stop, Lock, and
 Unlock. To do this, we configured multiple 'generic' exclude statements
 until no further commands were captured in the log.
 
-![](images\image31.png)
+![](images/image31.png)
 
 
 Figure 27. Generic exceptions to stop collecting log data.
@@ -625,7 +625,7 @@ successfully removed the noisy codes introduced by the malware.
 Operator: Equals Message Criterion: 100 ID 19B 10 NESSRGE nss Ess
 :soæyossesos Operator Equals Contains RPM • Exclude Criterion
 OOOOOOF2057 Remove 080 Start Stop Lock Unlock
-](images\image32.png)
+](images/image32.png)
 
 Figure 28. Two exceptions entered to defrost the sleigh.
 
@@ -643,7 +643,7 @@ Evergreen in the kitchen for help with this.
 application to identify any vulnerabilities we may be able to exploit to
 extract the necessary information.
 
-![](images\image33.png)
+![](images/image33.png)
 
 
 Figure 29. The vulnerable tag generator
@@ -653,7 +653,7 @@ requesting a non-existent page. In this instance, we learned the name
 and path for the tag generator server code. However, appending that path
 to the URL did not return execute the script or return any source code.
 
-![](images\image34.png)
+![](images/image34.png)
 
 
 Figure 30. Error message disclosing the name and path for the server
@@ -666,7 +666,7 @@ responses for each client action. By default, Burp does not provide all
 responses, so we had to create an intercept rule to ensure we saw all
 responses from the tag-generator.
 
-![](images\image35.png)
+![](images/image35.png)
 
 
 Figure 31. Added Intercept Responses Rule. The 'OR' operator ensure we
@@ -676,13 +676,13 @@ During these tests, we discovered that the client application would make
 a request to /image?id=\<filename\>.jpg. We fuzzed this input by
 entering a random jpg file name and were able to receive a response.
 
-![](images\image36.png)
+![](images/image36.png)
 
 Figure 32. Fuzzed URL request with successful image retrieval.
 
 However, passing the script path and name did not work.
 
-![](images\image37.png)
+![](images/image37.png)
 
 
 Figure 33. Failed to access the server-side code given the path
@@ -695,7 +695,7 @@ Bingo! We are still presented an error page in our browser window, but
 our captured response in Burp shows the contents of the server's
 '/etc/passwd' file.
 
-![](images\image38.png)
+![](images/image38.png)
 
 
 Figure 34. /etc/passwd displayed in web server response after passing a
@@ -716,7 +716,7 @@ which should contain the environment variables for the kernel (as PID 1
 is always assigned to the kernel). We modify our last web request
 replacing '/etc/passwd' with '/proc/1/environ'.
 
-![](images\image39.png)
+![](images/image39.png)
 
 
 Figure 35. Web request to view environment variables for PID 1
@@ -724,7 +724,7 @@ Figure 35. Web request to view environment variables for PID 1
 The request is successful, and our response contains the environment
 variables for the kernel, including the GREETZ variable.
 
-![](images\image40.png)
+![](images/image40.png)
 
 
 Figure 36. Environment variables for the server kernel
@@ -738,7 +738,7 @@ Snowball get access back to a host using ARP. Retrieve the document at
 /NORTH_POLE_Land_Use_Board_Meeting_Minutes.txt. Who recused herself from
 the vote described on the document?
 
-*Answer:* ![](images\image41.png)
+*Answer:* ![](images/image41.png)
 
 
 *Method:* This was another terminal that could only be accessed as
@@ -760,7 +760,7 @@ A quick tcpdump reveals an ARP request from ARP_requester, looking to
 find who is winsrvdc2019. We can presume our first task is to spoof a
 reply to ARP_requester as winsrvdc2019.
 
-![](images\image42.png)
+![](images/image42.png)
 
 
 Figure 37. tcpdump showing ARP requests
@@ -769,12 +769,12 @@ We made the necessary modifications to the ARP_response.py script to
 spoof an ARP reply. We will tell ARP_requester, the compromised machine,
 that we are winsrvdc2019.
 
-![](images\image43.png)
+![](images/image43.png)
 
 
 Figure 38. Packet modifications in ARP_response.py.
 
-![](images\image44.png)
+![](images/image44.png)
 
 
 Figure 39. Added an \'infinite\' loop to continuously send ARP replies.
@@ -784,13 +784,13 @@ attempt was successful, and our machine is now being sent DNS requests.
 We'll need to modify the dns_response.py script to send our crafted DNS
 responses.
 
-![](images\image45.png)
+![](images/image45.png)
 
 
 Figure 40. The ARP request followed by our spoofed reply. We then see a
 DNS request sent to our machine.
 
-![](images\image46.png)
+![](images/image46.png)
 
 
 Figure 41. dns_response.py modifications. We added an \'infinite\' loop
@@ -799,7 +799,7 @@ to continuously send replies.
 We check our tcpdump again and, well that's interesting... now we're
 seeing an http request coming our way.
 
-![](images\image47.png)
+![](images/image47.png)
 
 
 Figure 42. HTTP syn packet followed by a reset packet response.
@@ -807,7 +807,7 @@ Figure 42. HTTP syn packet followed by a reset packet response.
 Let's spin up a web server and look at the request. We'll use the
 http.server module included with Python.
 
-![](images\image48.png)
+![](images/image48.png)
 
 Figure 43. Python http.server module displaying malware http requests
 for suriv_amd64.deb.
@@ -824,7 +824,7 @@ the netcat package and we append a netcat reverse shell command to the
 postinst file, we *should* be able to capture a remote shell to the
 compromised system.
 
-![](images\image49.png)
+![](images/image49.png)
 
 
 Figure 44. Figure 44. Extracting the netcat package, modifying the
@@ -834,7 +834,7 @@ The malware is trying to download the software from a specific
 directory, so we need to mimic the same directory structure and place
 our file.
 
-![](images\image50.png)
+![](images/image50.png)
 
 
 Figure 45. Copying the modified malware file into the proper directory
@@ -843,7 +843,7 @@ location.
 Ahhhh! Time is running out, so let us get all our scripts going and see
 if we can capture a reverse shell.
 
-![](images\image51.png)
+![](images/image51.png)
 
 
 First, we need to start our ARP and DNS spoofers again. Because our
@@ -851,7 +851,7 @@ screen space is limited, we'll start them as background processes and
 send any output to /dev/null. This will keep the terminal open for us to
 use, if needed
 
-![](images\image52.png)
+![](images/image52.png)
 
 
 Figure 46. Executing the spoofing scripts as background processes and
@@ -863,7 +863,7 @@ server status, meaning the file has been downloaded, and shortly
 thereafter we receive a connection message on our netcat listener. We
 may have a shell!
 
-![](images\image53.png)
+![](images/image53.png)
 
 Figure 47. Upper right: Netcat listener on port 4444 with connection
 message from arp_requester. Bottom: http server responding to file
@@ -873,7 +873,7 @@ To test our shell, we send the 'whoami' command. The response validates
 we do indeed have a shell and are operating remotely in the context of
 the 'jfrost' user on 10.6.6.35.
 
-![](images\image54.png)
+![](images/image54.png)
 
 Figure 48. \'whoami\' command executed on the remote system. We are
 running as the jfrost user.
@@ -886,18 +886,18 @@ output the received connection to a file. Through our existing shell
 connection, we will execute another netcat command telling the remote
 machine to connect to our new listener and send the file.
 
-![](images\image55.png)
+![](images/image55.png)
 
 
 Figure 49. Directory listing on remote machine.
 
-![](images\image56.png)
+![](images/image56.png)
 
 
 Figure 50. netcat command executed on remote machine to send the
 required file to our terminal.
 
-![](images\image57.png)
+![](images/image57.png)
 
 
 Figure 51. Netcat listener command executed on our terminal. The file
@@ -907,7 +907,7 @@ With the file on our terminal, we do a quick 'cat
 NORTH_POLE_Land_Use_Board_Meeting_Minutes.txt' to view the contents of
 the file. Looks like we had a successful transfer!
 
-![](images\image58.png)
+![](images/image58.png)
 
 
 Figure 52. Output of \'cat
@@ -933,12 +933,12 @@ to bypass the fingerprint check. A search for 'Santa' led us to the
 app.js file which contained logic to test whether the passenger was
 Santa.
 
-![](images\image59.png)
+![](images/image59.png)
 
 
 Figure 53. The original \'Santa check\' code.
 
-![](images\image60.png)
+![](images/image60.png)
 
 
 Figure 54. The updated \'Santa check\' code. The \'OR\' operator makes
@@ -982,7 +982,7 @@ predicting the future nonce value.
 Being able to predict future random values without knowing the seed
 works because...**MATH**.
 
-![](images\image61.jpeg)
+![](images/image61.jpeg)
 
 
 It's well above my head, but essentially if we have 624 known random
@@ -1016,7 +1016,7 @@ data \[ data \[ data \[ data \[ data \[ \'documents\'\] - \'pid \] - \'
 -s(\" -s) -s.out\", • nonce blocks)) print(c2 . blocks \[len (c2 .
 blocks) \#c2 . blocks \[block\] . dump_doc (blck) \#for blolck in
 range(length of chain . blocks \[block\] . dump_doc(l) 1):
-](images\image62.png)
+](images/image62.png)
 
 Figure 55. naughty_nice.py code modifications.
 
@@ -1042,7 +1042,7 @@ Mersenne Twister Predictor code.
 18132891387785279449 1543 1543: 5643972521975276755 1544 1544:
 12288628311000202778 1545 1545 : 14033042245096512311 1546 1546:
 9999237799707722025 1547 1547: 7556872674124112955 1548 1548:
-16969683986178983974 ](images\image63.png)
+16969683986178983974 ](images/image63.png)
 
 
 Figure 56. Snippet of nonces.out file
@@ -1061,7 +1061,7 @@ f sys . stdin imEM•rt MTIgg37PredicCor predictor = ( ) for in range
 (624) : x = (int (next (argf))) predictor . set randbits (x, 64) ---
 with context lib. suppress (BrokenPipeError) : whi le True: print
 (predictor . geCrandbiCs (64) )
-](images\image64.png)
+](images/image64.png)
 
 
 Figure 57. Modified predictor code to accept 64bit values and output
@@ -1070,7 +1070,7 @@ predictions.
 Our modifications were successful, and we were presented with a list
 future nonces.
 
-![](images\image65.png)
+![](images/image65.png)
 
 
 Figure 58. Snippet of 64bit predicted nonces output from our modified
@@ -1100,14 +1100,14 @@ naughty_nice.py program provide SHA256 hashing rather than MD5. We
 further modified the code to hash each block until we found one that
 matched the known altered block SHA256 hash.
 
-![](images\image66.png)
+![](images/image66.png)
 
 
 Figure 59. Importing the SHA256 hash library.
 
 ![def full hash(self): \#hash obj - - MD5. new() hash obj = SHA256.new()
 hash obj . update(self . block data signed()) return hash obj
-.hexdigest() ](images\image67.png)
+.hexdigest() ](images/image67.png)
 
 
 Figure 60. Modification of existing full_hash function to provide SHA256
@@ -1117,12 +1117,12 @@ hashing.
 \#print (c2. blocks length of chain = len(c2.blocks) for i in
 range(length of chain) : if (c2.blocks\[i\] . full hash() == print
 (\"Jack\'s Modified Block - Block \#: % i) print (c2.blocks\[i\])
-c2.blocks\[i\].. ](images\image68.png)
+c2.blocks\[i\].. ](images/image68.png)
 
 
 Figure 61. Modified code to identify the block modified by Jack.
 
-![](images\image69.png)
+![](images/image69.png)
 
 
 Figure 62. Output of modified script showing Block \#1010 as the altered
@@ -1133,7 +1133,7 @@ identified the block location as 129459 or 001f9b3 in hex. We used this
 value to find the altered block within the blockchain.dat file in our
 hexeditor.
 
-![](images\image70.png)
+![](images/image70.png)
 
 
 Figure 63. The start of block 12959 within the blockchain.
@@ -1163,7 +1163,7 @@ I\'ve ever known in my life.\" --- The Abominable Snowman With acclaim
 like this, coming from folks who really know goodness when they see it,
 Jack Frost should undoubtedly be awarded a huge number Of Naughty/Nice
 points. Shinny Upatree 3/24/2020
-](images\image71.png)
+](images/image71.png)
 
 Figure 64. Jack Frost\'s altered letter showing nothing but accolades.
 
@@ -1177,7 +1177,7 @@ content. This was on page 194 in the section called UNICOLL based
 exploits. The example showed the author change a single bit in a PDF
 Pages object to point at page 3 rather than 2.
 
-![](images\image72.png)
+![](images/image72.png)
 
 
 Figure 65. Modifying a PDF file through a single bit change.
@@ -1186,12 +1186,12 @@ I looked for the 'Pages" value of Jack's PDF and found it right next to
 the phrase "\_Go_Away/Santa" which apparently Jack was using as a prefix
 for the exploit. This had to be the bit.
 
-![](images\image73.png)
+![](images/image73.png)
 
 
 Figure 66. The bit to be changed.
 
-![](images\image74.png)
+![](images/image74.png)
 
 
 Figure 67. The changed bit after adding +1.
@@ -1199,7 +1199,7 @@ Figure 67. The changed bit after adding +1.
 I added 1 to the bit and re-exported the PDF file. It worked! Opening
 the pdf file now showed the original negative pdf for Jack.
 
-![](images\image75.png)
+![](images/image75.png)
 
 
 Figure 68. The original PDF file for Jack. Shinny Upatree is far too
@@ -1212,12 +1212,12 @@ instance), but you need to offset the change by removing a bit from the
 result will be two different files sharing the same MD5 hash. I made the
 necessary changes.
 
-![](images\image76.png)
+![](images/image76.png)
 
 
 Figure 69. Offset bit before +1 change.
 
-![](images\image77.png)
+![](images/image77.png)
 
 
 Figure 70. Offset bit after -1 change.
@@ -1231,7 +1231,7 @@ the change.
 I modified naughty_nice.py to show me the other block values the elf had
 previously mentioned Jack changing.
 
-![](images\image78.png)
+![](images/image78.png)
 
 
 Figure 71. status and score, respectively.
@@ -1245,23 +1245,23 @@ be the Naughty / Nice bit that needs to be changed.
 A quick review of the naughty_nice.py code helps us confirm the
 Naughty/Nice bit syntax and location of the bit in the block.
 
-![](images\image79.png)
+![](images/image79.png)
 
 
 Figure 72. Code snippet from naughty_nice.py. As suspected, Naughty = 0,
 Nice = 1.
 
-![](images\image80.png)
+![](images/image80.png)
 
 
 Figure 73. The \"sign\" bit follows the score.
 
-![](images\image81.png)
+![](images/image81.png)
 
 
 Figure 74. The "sign" and offset bits before change.
 
-![](images\image82.png)
+![](images/image82.png)
 
 
 Figure 75. Bits after change.
@@ -1269,7 +1269,7 @@ Figure 75. Bits after change.
 Running naughty_nice.py again to confirm the change validates it was
 successful.
 
-![](images\image83.png)
+![](images/image83.png)
 
 
 Figure 76. Changed naughty/nice value to naughty.
@@ -1279,7 +1279,7 @@ hashes of Jack's altered block and our recreated version are the same. I
 made some modifications to the script to perform an MD5 hash of the
 block and print it out.
 
-![](images\image84.png)
+![](images/image84.png)
 
 
 Figure 77. Side by side execution of naughty_nice.py with the original
@@ -1290,7 +1290,7 @@ Boom! It's a match!
 
 Now we rehash the block with SHA256 and submit our answer.
 
-![](images\image85.png)
+![](images/image85.png)
 
 
 Figure 78. SHA256 hash value of rebuilt block
@@ -1309,13 +1309,13 @@ the portrait and used it to control Santa Claus and sabotage his Naughty
 and Nice list. Thanks to our efforts, we've saved Christmas!
 
   ------------------------------------------------------------------------------------------ ------------------------------------------------------------------------------
-  ![](images\image86.png)
+  ![](images/image86.png)
   ------------------------------------------------------------------------------------------ ------------------------------------------------------------------------------
 
 *Figure* *79. Jack Frost before and after being captured. He doesn\'t
 look so smug now.*
 
-![](images\image88.png)
+![](images/image88.png)
 
 
 Figure 80. Group picture from Krinklecon3
@@ -1385,7 +1385,7 @@ was able to share some \*nudges\* with others as well who were also
 struggling.
 
 ![From zero to hero - Baby Win \| Meme
-Generator](images\image89.jpeg)
+Generator](images/image89.jpeg)
 
 
 # Comments & Suggestions
