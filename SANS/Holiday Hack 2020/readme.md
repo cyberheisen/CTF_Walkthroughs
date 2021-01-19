@@ -386,155 +386,16 @@ We are presented with the KringleCastle SOC page consisting of chat
 sessions between Santa and his elf SOC staff and seven Splunk related
 questions we need to answer before answering the Challenge Question.
 
-+-----+-------------------+-------------------+-------------------+
-| No  | Training          | Answer            | Method            |
-|     | Questions         |                   |                   |
-+=====+===================+===================+===================+
-| 1\. | How many distinct | 13                | To get us         |
-|     | MITRE ATT&CK      |                   | started, Alice    |
-|     | techniques did    |                   | mentions a stored |
-|     | Alice emulate?    |                   | search in Splunk. |
-|     |                   |                   | We executed the   |
-|     |                   |                   | search and        |
-|     |                   |                   | manually counted  |
-|     |                   |                   | the unique        |
-|     |                   |                   | attacks run. Some |
-|     |                   |                   | attacks had       |
-|     |                   |                   | multiple runs     |
-|     |                   |                   | depending on the  |
-|     |                   |                   | target operating  |
-|     |                   |                   | systems and we    |
-|     |                   |                   | had to ensure we  |
-|     |                   |                   | counted the       |
-|     |                   |                   | multiples as a    |
-|     |                   |                   | single distinct   |
-|     |                   |                   | attack.           |
-+-----+-------------------+-------------------+-------------------+
-| 2\. | What are the      | t1059.003-main    | Using the search  |
-|     | names of the two  |                   | from the first    |
-|     | indexes that      | t1059.003-win     | question, we      |
-|     | contain the       |                   | sorted the        |
-|     | results of        |                   | results, found    |
-|     | emulating         |                   | t1059.003, and    |
-|     | Enterprise ATT&CK |                   | identified the    |
-|     | technique         |                   | two associated    |
-|     | 1059.003? (Put    |                   | indexes.          |
-|     | them in           |                   |                   |
-|     | alphabetical      |                   |                   |
-|     | order and         |                   |                   |
-|     | separate them     |                   |                   |
-|     | with a space)     |                   |                   |
-+-----+-------------------+-------------------+-------------------+
-| 3\. | One technique     | HKEY_LOCAL_MA     | We executed:      |
-|     | that Santa had us | CHINE\\SOFTWARE\\ | index=\* \"reg    |
-|     | simulate deals    |                   | query\"           |
-|     | with \'system     | Micros            | \"machineGuid\"   |
-|     | information       | oft\\Cryptography | and browsed the   |
-|     | discovery\'. What |                   | results           |
-|     | is the full name  |                   |                   |
-|     | of the registry   |                   |                   |
-|     | key that is       |                   |                   |
-|     | queried to        |                   |                   |
-|     | determine the     |                   |                   |
-|     | MachineGuid?      |                   |                   |
-+-----+-------------------+-------------------+-------------------+
-| 4\. | According to      | 202               | index=ATTACK      |
-|     | events recorded   | 0-11-30T17:44:15Z | ostap \| table    |
-|     | by the Splunk     |                   | \"Execution Time  |
-|     | Attack Range,     |                   | \_UTC\",          |
-|     | when was the      |                   | \"Technique\",    |
-|     | first OSTAP       |                   | \                 |
-|     | related atomic    |                   | "technique_name\" |
-|     | test executed?    |                   |                   |
-|     | (Please provide   |                   |                   |
-|     | the alphanumeric  |                   |                   |
-|     | UTC timestamp.)   |                   |                   |
-+-----+-------------------+-------------------+-------------------+
-| 5\. | One Atomic Red    | 3648              | A google search   |
-|     | Team test         |                   | of frgnca brought |
-|     | executed by the   |                   | us to the github  |
-|     | Attack Range      |                   | [^7]page. From    |
-|     | makes use of an   |                   | there we          |
-|     | open source       |                   | identified what   |
-|     | package authored  |                   | seemed the most   |
-|     | by frgnca on      |                   | logical component |
-|     | GitHub. According |                   | --                |
-|     | to Sysmon (Event  |                   | A                 |
-|     | Code 1) events in |                   | udioDeviceCmdlets |
-|     | Splunk, what was  |                   | - and did a       |
-|     | the ProcessId     |                   | Google search for |
-|     | associated with   |                   | "Au               |
-|     | the first use of  |                   | dioDeviceCmdlets" |
-|     | this component?   |                   | "Atomic". The     |
-|     |                   |                   | first result      |
-|     |                   |                   | brought us to the |
-|     |                   |                   | github [^8]page   |
-|     |                   |                   | for T1123 --      |
-|     |                   |                   | Audio Capture. We |
-|     |                   |                   | then executed the |
-|     |                   |                   | following Splunk  |
-|     |                   |                   | search which      |
-|     |                   |                   | provided our      |
-|     |                   |                   | answer.           |
-|     |                   |                   | index=t1123\*     |
-|     |                   |                   | EventCode=1       |
-|     |                   |                   | \*Wind            |
-|     |                   |                   | owsAudioDevice-Po |
-|     |                   |                   | wershell-Cmdlet\* |
-|     |                   |                   | This results      |
-|     |                   |                   | consisted of two  |
-|     |                   |                   | events with two   |
-|     |                   |                   | unique            |
-|     |                   |                   | ProcessIds. We    |
-|     |                   |                   | tried both and    |
-|     |                   |                   | one was the       |
-|     |                   |                   | correct value.    |
-+-----+-------------------+-------------------+-------------------+
-| 6\. | Alice ran a       | quser             | We ran an initial |
-|     | simulation of an  |                   | Splunk query to   |
-|     | attacker abusing  |                   | identify any bat  |
-|     | Windows registry  |                   | files used:       |
-|     | run keys. This    |                   | index=\* \*.bat   |
-|     | technique         |                   | and from those    |
-|     | leveraged a       |                   | results, we       |
-|     | multi-line batch  |                   | started           |
-|     | file that was     |                   | investigating the |
-|     | also used by a    |                   | files from the    |
-|     | few other         |                   | atomic-red-team   |
-|     | techniques. What  |                   | Github [^9]listed |
-|     | is the final      |                   | and ruling them   |
-|     | command of this   |                   | out using "NOT"   |
-|     | multi-line batch  |                   | operators in our  |
-|     | file used as part |                   | search. index=\*  |
-|     | of this           |                   | \*.bat NOT        |
-|     | simulation?       |                   | batstartup.bat    |
-|     |                   |                   | NOT               |
-|     |                   |                   | pa                |
-|     |                   |                   | rse_net_users.bat |
-|     |                   |                   | The third file    |
-|     |                   |                   | identified:       |
-|     |                   |                   | 'Di               |
-|     |                   |                   | scovery.bat[^10]' |
-|     |                   |                   | had multiple      |
-|     |                   |                   | lines and the     |
-|     |                   |                   | final line in the |
-|     |                   |                   | file was our      |
-|     |                   |                   | answer.           |
-+-----+-------------------+-------------------+-------------------+
-| 7\. | According to x509 | 55FCEEBB2127      | index=\*          |
-|     | certificate       |                   | vendor=Bro        |
-|     | events captured   | 0D9249E86F4B      | cer               |
-|     | by Zeek (formerly |                   | tificate.issuer=\ |
-|     | Bro), what is the | 9DC7AA60          | "CN=win-dc-748.at |
-|     | serial number of  |                   | tackrange.local\" |
-|     | the TLS           |                   |                   |
-|     | certificate       |                   | \| table          |
-|     | assigned to the   |                   | cer               |
-|     | Windows domain    |                   | tificate.issuer,c |
-|     | controller in the |                   | ertificate.serial |
-|     | attack range?     |                   |                   |
-+-----+-------------------+-------------------+-------------------+
 
+| No  | Training Questions | Answer | Method |
+|---|---|---|---|
+| 1\. | How many distinct MITRE ATT&CK techniques did Alice emulate? | 13| To get us started, Alice mentions a stored search in Splunk. We executed the search and manually counted the unique ttacks run. Some attacks had ultiple runs depending on the target operating systems and we had to ensure we counted the multiples as a single distinct attack.|
+| 2\. |  What are the names of the two indexes that contain the results of emulating Enterprise ATT&CK technique 1059.003? (Put them in alphabetical order and separate them with a space) | t1059.003-main  t1059.003-win |  Using the search from the first question, we sorted the results and found t1059.003 and identified the two associated indexes |
+| 3\. |  One technique that Santa had us simulate deals with system information discovery What is the full name of the registry key that is queried to determine the MachineGuid |  HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography |  We executed: index=\* \"reg query\" \"machineGuid\" and browsed the results            |
+| 4\. |  According to events recorded by the Splunk Attack Range when was the first OSTAP related atomic test executed Please provide the alphanumeric UTC timestamp | 2020-11-30T17:44:15Z  |  index=ATTACK ostap \\"Execution Time\_UTC\",\"Technique\",\"technique_name\" |
+| 5\. |  One Atomic Red Team test executed by the Attack Range makes use of an open source package authored by frgnca on GitHub According to Sysmon Event Code 1 events in Splunk what was the ProcessId associated with the first use of this component | 3648 |  A google search of frgnca brought us to the github [^7] page From there we identified what seemed the most logical component AudioDeviceCmdlets and did a Google search for AudioDeviceCmdlets Atomic. The first result brought us to the github [^8] page for T1123--Audio Capture. We then executed the following Splunk search which provided our answer index=t1123\* EventCode=1 \*WindowsAudioDevice Powershell Cmdlet\* This results consisted of two events with two unique ProcessIds. We tried both and one was the correct value. |
+| 6\. |  Alice ran a simulation of an attacker abusing Windows registry run keys This technique leveraged a multi line batch file that was also used by a few other techniques What is the final command of this multi line batch file used as part of this simulation. | quser |  We ran an initial Splunk query to identify any bat files used: index=\* \*.bat and from those results, we started investigating the files from the atomic-red-team Github [^9]listed and ruling them out using "NOT" operators in our search. index=\* \*.bat NOT batstartup.bat NOT pa rse_net_users.bat The third file identified: 'Discovery.bat[^10]' had multiple lines and the final line in the file was our answer. |
+| 7\. |  According to x509 certificate events captured by Zeek (formerly Bro), what is the serial number of the TLS certificate assigned to the Windows domain controller in the attack range? | 55FCEEBB21270D9249E86F4B9DC7AA60 |  index=\* vendor=Brocertificate.issuer=\ "CN=win-dc-748.attackrange.local\" \ certificate.issuer,certificate.serial  | 
 Once we had answered the seven questions correctly, we received an
 instant message from Alice Bluebird giving us a base64 encoded
 ciphertext. She does not provide the encryption mechanism, only
