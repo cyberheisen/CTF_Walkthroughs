@@ -7,7 +7,7 @@
   **Location**     [Vulnhub](https://www.vulnhub.com/entry/noobbox-1,664/)
   **Author**       [Cyberheisen](https://www.twitter.com/cyberheisen)
 
-# [Obligatory Disclaimer]{.ul}
+# [Obligatory Disclaimer]
 
 The tools and techniques described in this material are meant for
 educational purposes. Their use on targets without obtaining prior
@@ -17,7 +17,7 @@ because of your actions is yours alone.
 
 Any views and opinions expressed in this document are my own.
 
-# [Walkthrough]{.ul}
+# [Walkthrough]
 
 First, I need to note that for some reason, the image would not request
 a DHCP address. To correct this, I added a second root level account
@@ -28,17 +28,14 @@ course of this exercise other than to obtain an IP address.
 Once I was able to access the system on my network, I ran autorecon to
 enumerate the services.
 
-![](media\media\image1.png){width="4.990825678040245in"
-height="3.893157261592301in"} 
+![](images\image1.png) 
 
-![](media\media\image2.png){width="4.954128390201225in"
-height="2.657101924759405in"} 
+![](images\image2.png) 
 
 Only a single port, 80, was available. Browsing to the address presented
 us with a default Apache2 page.
 
-![](media\media\image3.png){width="5.569996719160105in"
-height="3.954128390201225in"}
+![](images\image3.png)
 
  
 
@@ -47,11 +44,9 @@ webserver and found a WordPress site.
 
  
 
-![](media\media\image4.png){width="4.752083333333333in"
-height="3.2569444444444446in"}
+![](images\image4.png)
 
- ![](media\media\image5.png){width="5.994956255468066in"
-height="4.12844050743657in"}
+ ![](images\image5.png)
 
 Unfortunately, the WordPress site links pointed to an unreachable
 address, so the site was not rendered properly. Perhaps this was the
@@ -59,47 +54,39 @@ original address when the box was created. To get around this, I used
 Burp Proxy's "Match and Replace" functionality to replace the
 unreachable IP address, which the appropriate address assigned.
 
-![](media\media\image6.png){width="8.311925853018373in"
-height="1.946991469816273in"}
+![](images\image6.png)
 
 And that corrected the website rendering.
 
-![](media\media\image7.png){width="7.339448818897638in"
-height="2.973650481189851in"}
+![](images\image7.png)
 
  
 
 I then executed wpscan against the WordPress site, forwarded through my
 Burp proxy to ensure all the links worked.
 
-![](media\media\image8.png){width="9.15625in"
-height="0.6333333333333333in"}
+![](images\image8.png)
 
  The results were rather disappointing. A very recent version of
 Wordpress, without plugins, and no known vulnerabilities.
 
-![](media\media\image9.png){width="5.192361111111111in"
-height="0.9722222222222222in"}
+![](images\image9.png)
 
  
 
-![](media\media\image10.png){width="6.183333333333334in"
-height="2.165277777777778in"}
+![](images\image10.png)
 
  
 
-![](media\media\image11.png){width="6.2752285651793525in"
-height="2.5352843394575677in"}
+![](images\image11.png)
 
  
 
-![](media\media\image12.png){width="6.256879921259842in"
-height="2.1859733158355206in"}
+![](images\image12.png)
 
  
 
-![](media\media\image13.png){width="6.3669717847769025in"
-height="1.9101388888888888in"}
+![](images\image13.png)
 
 I spent some time investigating the xmlrpc interface, but was not
 successful in getting a foothold.
@@ -108,8 +95,7 @@ My next step was to focus on the user identified. I executed wpscan
 again and performed a brute force attack against the noobbox and admin
 accounts using a top 1000 wordlist.
 
-![](media\media\image14.png){width="6.4587150043744534in"
-height="0.4445209973753281in"}
+![](images\image14.png)
 
 That was a no go. I then tried running the rockyou.txt wordlist. Because
 of its size, I decided to focus on the noobbox account since we know
@@ -119,11 +105,9 @@ since it was showing it would take days to complete.
 I decided to try other wordlists and just let them run. I got super
 lucky because literally the next list I tried had a hit.
 
-![](media\media\image15.png){width="6.5504582239720035in"
-height="0.5095122484689414in"}
+![](images\image15.png)
 
-![](media\media\image16.png){width="6.587155511811024in"
-height="0.8555916447944008in"}
+![](images\image16.png)
 
  
 
@@ -132,16 +116,14 @@ WordPress site and were able to authenticate and access the dashboard.
 
  
 
-![](media\media\image17.png){width="6.6422014435695536in"
-height="3.4455774278215223in"}
+![](images\image17.png)
 
  
 
 I tried uploading a webshell through the media upload function, but it
 failed immediately.
 
-![](media\media\image18.png){width="6.752293307086614in"
-height="3.266990376202975in"}
+![](images\image18.png)
 
  
 
@@ -150,49 +132,41 @@ manager plugin that would allow me to upload any file to the server. I
 went to the plugin configuration page and did a search for 'file'. File
 Manager was the first item returned and I clicked on "Install Now"
 
-![](media\media\image19.png){width="6.715596019247594in"
-height="3.924857830271216in"}
+![](images\image19.png)
 
  
 
 Once installed, I selected the option from the dashboard menu and....
 
-![](media\media\image20.png){width="6.752293307086614in"
-height="2.7480479002624674in"}
+![](images\image20.png)
 
 Oh yeah, this is looking promising.
 
 We modify our webshell with the attacker source and port address.
 
-![](media\media\image21.png){width="6.788990594925634in"
-height="3.54708552055993in"}
+![](images\image21.png)
 
 And upload it to the server. We'll upload it to the "uploads" directory
 which we know from our previous DIRB results is publicly accessible.
 
-![](media\media\image22.png){width="6.862385170603675in"
-height="2.8387226596675417in"}
+![](images\image22.png)
 
 Let's configure our netcat listener
 
-![](media\media\image23.png){width="6.15625in"
-height="0.7152777777777778in"}
+![](images\image23.png)
 
 And we browse to our uploaded shell
 
-![](media\media\image24.png){width="6.146789151356081in"
-height="2.311246719160105in"}
+![](images\image24.png)
 
  And just like that, we have a shell and our first flag.
 
-![](media\media\image25.png){width="6.165137795275591in"
-height="2.673222878390201in"}
+![](images\image25.png)
 
 Now we move to escalate our privilege, but before we do that, let's
 upgrade our shell.
 
-![](media\media\image26.png){width="4.1194444444444445in"
-height="2.577777777777778in"}
+![](images\image26.png)
 
 Because we\'re using zsh, we must combine the stty raw -echo command
 with \'fg\' followed by hitting enter twice.
@@ -201,13 +175,11 @@ Now that we have a fancy interactive shell, let's see try to escalate
 our privilege. We're running as www-data. Since we have the password for
 the WordPress NoobBox user, let's try it against our Linux noobbox user.
 
-![](media\media\image27.png){width="3.8534722222222224in"
-height="1.0277777777777777in"}
+![](images\image27.png)
 
 It worked!
 
-![](media\media\image28.png){width="2.5409722222222224in"
-height="0.7618055555555555in"}
+![](images\image28.png)
 
 But now we're in a restricted shell. No worries! A simple /bin/bash
 command breaks us out and into a full bash shell.
@@ -217,8 +189,7 @@ privilege escalation. One of those is to find out whether the account
 I'm using has sudo privileges. We can't view the sudoers file as
 noobbox, but we can issue a sudo -l command and use our password.
 
-![](media\media\image29.png){width="7.84375in"
-height="1.8715277777777777in"}
+![](images\image29.png)
 
  
 
@@ -228,15 +199,13 @@ Look at that! We\'re able to run vim.... This box is ours...
 
 We do a \'sudo vim\' then execute the \'shell\' command
 
-![](media\media\image30.png){width="9.284722222222221in"
-height="4.238194444444445in"}
+![](images\image30.png)
 
 We have root and the flag.
 
-![](media\media\image31.png){width="4.238194444444445in"
-height="1.1104166666666666in"} 
+![](images\image31.png) 
 
-# [Conclusion]{.ul}
+# [Conclusion]
 
 Getting the image to obtain an IP and then correcting the IP issues with
 the WordPress site took a little time and distracted from the flag
@@ -260,7 +229,7 @@ Many thanks to [Shadow
 Phreak](https://www.youtube.com/channel/UCeO0PX1ihh-Aza96P3Qs-1w) for
 taking the time to put this challenge together!
 
-# [FLAGS]{.ul}
+# [FLAGS]
 
 Flags are reportedly generated dynamically when the target is reset, so
 the flags below will be different on each run.
@@ -269,7 +238,7 @@ the flags below will be different on each run.
   ---------- ----------------------------------
   root.txt   a4c45279eaad84e5bb8ae0dfc5034400
 
-# [Commands and Tools Used]{.ul}
+# [Commands and Tools Used]
 
   **Name**                                                                      **Description**                                                                                                                                                                                                                                                             **How it was used**
   ----------------------------------------------------------------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --------------------------------------------------------------------------------------------------------------------------------------------------
