@@ -28,14 +28,14 @@ course of this exercise other than to obtain an IP address.
 Once I was able to access the system on my network, I ran autorecon to
 enumerate the services.
 
-![](images\image1.png) 
+![](images/image1.png) 
 
-![](images\image2.png) 
+![](images/image2.png) 
 
 Only a single port, 80, was available. Browsing to the address presented
 us with a default Apache2 page.
 
-![](images\image3.png)
+![](images/image3.png)
 
  
 
@@ -44,9 +44,9 @@ webserver and found a WordPress site.
 
  
 
-![](images\image4.png)
+![](images/image4.png)
 
- ![](images\image5.png)
+ ![](images/image5.png)
 
 Unfortunately, the WordPress site links pointed to an unreachable
 address, so the site was not rendered properly. Perhaps this was the
@@ -54,39 +54,39 @@ original address when the box was created. To get around this, I used
 Burp Proxy's "Match and Replace" functionality to replace the
 unreachable IP address, which the appropriate address assigned.
 
-![](images\image6.png)
+![](images/image6.png)
 
 And that corrected the website rendering.
 
-![](images\image7.png)
+![](images/image7.png)
 
  
 
 I then executed wpscan against the WordPress site, forwarded through my
 Burp proxy to ensure all the links worked.
 
-![](images\image8.png)
+![](images/image8.png)
 
  The results were rather disappointing. A very recent version of
 Wordpress, without plugins, and no known vulnerabilities.
 
-![](images\image9.png)
+![](images/image9.png)
 
  
 
-![](images\image10.png)
+![](images/image10.png)
 
  
 
-![](images\image11.png)
+![](images/image11.png)
 
  
 
-![](images\image12.png)
+![](images/image12.png)
 
  
 
-![](images\image13.png)
+![](images/image13.png)
 
 I spent some time investigating the xmlrpc interface, but was not
 successful in getting a foothold.
@@ -95,7 +95,7 @@ My next step was to focus on the user identified. I executed wpscan
 again and performed a brute force attack against the noobbox and admin
 accounts using a top 1000 wordlist.
 
-![](images\image14.png)
+![](images/image14.png)
 
 That was a no go. I then tried running the rockyou.txt wordlist. Because
 of its size, I decided to focus on the noobbox account since we know
@@ -105,9 +105,9 @@ since it was showing it would take days to complete.
 I decided to try other wordlists and just let them run. I got super
 lucky because literally the next list I tried had a hit.
 
-![](images\image15.png)
+![](images/image15.png)
 
-![](images\image16.png)
+![](images/image16.png)
 
  
 
@@ -116,14 +116,14 @@ WordPress site and were able to authenticate and access the dashboard.
 
  
 
-![](images\image17.png)
+![](images/image17.png)
 
  
 
 I tried uploading a webshell through the media upload function, but it
 failed immediately.
 
-![](images\image18.png)
+![](images/image18.png)
 
  
 
@@ -132,41 +132,41 @@ manager plugin that would allow me to upload any file to the server. I
 went to the plugin configuration page and did a search for 'file'. File
 Manager was the first item returned and I clicked on "Install Now"
 
-![](images\image19.png)
+![](images/image19.png)
 
  
 
 Once installed, I selected the option from the dashboard menu and....
 
-![](images\image20.png)
+![](images/image20.png)
 
 Oh yeah, this is looking promising.
 
 We modify our webshell with the attacker source and port address.
 
-![](images\image21.png)
+![](images/image21.png)
 
 And upload it to the server. We'll upload it to the "uploads" directory
 which we know from our previous DIRB results is publicly accessible.
 
-![](images\image22.png)
+![](images/image22.png)
 
 Let's configure our netcat listener
 
-![](images\image23.png)
+![](images/image23.png)
 
 And we browse to our uploaded shell
 
-![](images\image24.png)
+![](images/image24.png)
 
  And just like that, we have a shell and our first flag.
 
-![](images\image25.png)
+![](images/image25.png)
 
 Now we move to escalate our privilege, but before we do that, let's
 upgrade our shell.
 
-![](images\image26.png)
+![](images/image26.png)
 
 Because we\'re using zsh, we must combine the stty raw -echo command
 with \'fg\' followed by hitting enter twice.
@@ -175,11 +175,11 @@ Now that we have a fancy interactive shell, let's see try to escalate
 our privilege. We're running as www-data. Since we have the password for
 the WordPress NoobBox user, let's try it against our Linux noobbox user.
 
-![](images\image27.png)
+![](images/image27.png)
 
 It worked!
 
-![](images\image28.png)
+![](images/image28.png)
 
 But now we're in a restricted shell. No worries! A simple /bin/bash
 command breaks us out and into a full bash shell.
@@ -189,7 +189,7 @@ privilege escalation. One of those is to find out whether the account
 I'm using has sudo privileges. We can't view the sudoers file as
 noobbox, but we can issue a sudo -l command and use our password.
 
-![](images\image29.png)
+![](images/image29.png)
 
  
 
@@ -199,11 +199,11 @@ Look at that! We\'re able to run vim.... This box is ours...
 
 We do a \'sudo vim\' then execute the \'shell\' command
 
-![](images\image30.png)
+![](images/image30.png)
 
 We have root and the flag.
 
-![](images\image31.png) 
+![](images/image31.png) 
 
 # [Conclusion]
 
