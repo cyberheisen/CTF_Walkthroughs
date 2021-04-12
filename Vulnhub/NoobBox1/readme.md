@@ -21,7 +21,7 @@ Any views and opinions expressed in this document are my own.
 
 First, I need to note that for some reason, the image would not request
 a DHCP address. To correct this, I added a second root level account
-(root2) to the image so I could log in and execute /sbin/dhcpcd
+(root2) to the image so I could log in and execute `/sbin/dhcpcd`
 manually. I did not use this account for any other purpose during the
 course of this exercise other than to obtain an IP address.
 
@@ -168,8 +168,8 @@ upgrade our shell.
 
 ![](images/image26.png)
 
-Because we\'re using zsh, we must combine the stty raw -echo command
-with \'fg\' followed by hitting enter twice.
+Because we\'re using zsh, we must combine the `stty raw -echo` command
+with `fg` followed by hitting enter twice.
 
 Now that we have a fancy interactive shell, let's see try to escalate
 our privilege. We're running as www-data. Since we have the password for
@@ -181,13 +181,13 @@ It worked!
 
 ![](images/image28.png)
 
-But now we're in a restricted shell. No worries! A simple /bin/bash
+But now we're in a restricted shell. No worries! A simple `/bin/bash`
 command breaks us out and into a full bash shell.
 
 There are usually a handful of quick commands I try whenever looking for
 privilege escalation. One of those is to find out whether the account
 I'm using has sudo privileges. We can't view the sudoers file as
-noobbox, but we can issue a sudo -l command and use our password.
+noobbox, but we can issue a `sudo -l` command and use our password.
 
 ![](images/image29.png)
 
@@ -197,7 +197,7 @@ Look at that! We\'re able to run vim.... This box is ours...
 
  
 
-We do a \'sudo vim\' then execute the \'shell\' command
+We do a `sudo vim` then execute the `shell` command
 
 ![](images/image30.png)
 
