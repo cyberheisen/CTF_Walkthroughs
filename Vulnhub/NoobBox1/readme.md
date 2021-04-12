@@ -231,8 +231,7 @@ taking the time to put this challenge together!
 
 # [FLAGS]
 
-  user.txt   e7028891afea8df6164a35880cc7e2e5
-  ---------- ----------------------------------
+  user.txt   e7028891afea8df6164a35880cc7e2e5  
   root.txt   a4c45279eaad84e5bb8ae0dfc5034400
 
 # [Commands and Tools Used]
