@@ -271,11 +271,11 @@ challenge together!
 
 Flags are reportedly generated dynamically when the target is reset, so
 the flags below will be different on each run.
-
-  user1.txt   Fl4g{u5er1r34ch3d5ucc355fully}
-  ----------- -----------------------------------
-  user2.txt   Fl4g{Y0ur34ch3du53r25uc355ful1y}
-  root.txt    Fl4g{r00t-H4ckTh3P14n3t0nc34g41n}
+|||
+|---|---|
+|user1.txt|Fl4g{u5er1r34ch3d5ucc355fully}|
+|user2.txt|Fl4g{Y0ur34ch3du53r25uc355ful1y}|
+|root.txt|Fl4g{r00t-H4ckTh3P14n3t0nc34g41n}|
 
 # [Commands and Tools Used]
 
