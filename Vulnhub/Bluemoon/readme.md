@@ -23,11 +23,11 @@ We start with some enumeration
 
  
 
-![](images\image1.png)
+![](images/image1.png)
 
  
 
-![](images\image2.png)
+![](images/image2.png)
 
  
 
@@ -39,7 +39,7 @@ The FTP on 21 does not allow anonymous, so let\'s look at port 80.
 
  
 
-![](images\image3.png)
+![](images/image3.png)
 
 No links and nothing hidden in the page source. Let\'s try to brute
 force some directories.
@@ -48,7 +48,7 @@ force some directories.
 
  
 
-![](images\image4.png)
+![](images/image4.png)
 
  
 
@@ -56,7 +56,7 @@ And we\'ve found a directory called \'/hidden_text\'.
 
  
 
-![](images\image5.png)
+![](images/image5.png)
 
 ...it contains a QR code.
 
@@ -64,17 +64,17 @@ And we\'ve found a directory called \'/hidden_text\'.
 
 The decoded QR code contain FTP credentials.
 
-![](images\image6.png)
+![](images/image6.png)
 
  Let's try using them on the ftp server.
 
-![](images\image7.png)
+![](images/image7.png)
 
  
 
  
 
-![](images\image8.png)
+![](images/image8.png)
 
  
 
@@ -88,7 +88,7 @@ can get a remote shell.
 
  
 
-![](images\image9.png)
+![](images/image9.png)
 
 That worked; we have a shell.
 
@@ -99,7 +99,7 @@ However, we\'re not able to read the flag in Jerry\'s folder.
 
  
 
-![](images\image10.png)
+![](images/image10.png)
 
  
 
@@ -111,7 +111,7 @@ Now that we\'re on the system, let\'s try viewing those ftp files again.
 
  
 
-![](images\image11.png)
+![](images/image11.png)
 
  
 
@@ -123,7 +123,7 @@ working password. .
 
  
 
-![](images\image12.png)
+![](images/image12.png)
 
  
 
@@ -137,14 +137,14 @@ Let\'s try to ssh using the new credentials.
 
  
 
-![](images\image13.png)
+![](images/image13.png)
  
 
 It worked! Do we have any sudo capabilities?
 
  
 
-![](images\image14.png)
+![](images/image14.png)
 
  
 
@@ -153,7 +153,7 @@ with Jerry\'s permissions without a password.
 
  
 
-![](images\image15.png)
+![](images/image15.png)
 
  
 
@@ -162,13 +162,13 @@ executed at the terminal. Let\'s test this theory.
 
  
 
-![](images\image16.png)
+![](images/image16.png)
 
  
 
 The -u switch tells sudo to execute as the \'Jerry\' user.
 
-![](images\image17.png)
+![](images/image17.png)
  
 
 Ok, that worked. We entered \'uname -a\' as our feedback and the command
@@ -178,7 +178,7 @@ was executed. With this knowledge, let\'s see if we can get a shell.
 
  
 
-![](images\image18.png)
+![](images/image18.png)
 
  
 
@@ -188,11 +188,11 @@ our kali machine.
 
  
 
-![](images\image19.png)
+![](images/image19.png)
 
  
 
-![](images\image20.png)
+![](images/image20.png)
  
 
 We now have a remote shell back to the machine as the Jerry user.
@@ -201,7 +201,7 @@ We now have a remote shell back to the machine as the Jerry user.
 
 We upgrade the shell to make it interactive.
 
-![](images\image21.png)
+![](images/image21.png)
  
 
 ...and we run some of the standard privilege escalation checks. First,
@@ -209,7 +209,7 @@ are we allowed to execute any commands as sudo?
 
  
 
-![](images\image22.png)
+![](images/image22.png)
  
 
 Nope...
@@ -220,11 +220,11 @@ Let\'s see what we have running as root
 
  
 
-![](images\image23.png)
+![](images/image23.png)
 
  
 
-![](images\image24.png)
+![](images/image24.png)
 
  
 
@@ -235,7 +235,7 @@ break out of the image.
 
  
 
-![](images\image25.png)
+![](images/image25.png)
 
  
 
@@ -243,7 +243,7 @@ It\'s there. Let\'s try to break out. We are using the technique
 described here: [Docker Breakout -
 HackTricks](https://book.hacktricks.xyz/linux-unix/privilege-escalation/docker-breakout#mounted-docker-socket)
 
-![](images\image26.png)
+![](images/image26.png)
 
  
 
@@ -251,7 +251,7 @@ HackTricks](https://book.hacktricks.xyz/linux-unix/privilege-escalation/docker-b
 
  
 
-![](images\image27.png)
+![](images/image27.png)
  
 
 # [Conclusion]
@@ -278,9 +278,9 @@ the flags below will be different on each run.
   root.txt    Fl4g{r00t-H4ckTh3P14n3t0nc34g41n}
 
 # [Commands and Tools Used]
-|--|--|
-  **Name**                                               **Description**                                                                                                                                                                                                                                                             **How it was used**
-  ------------------------------------------------------ --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------
-  [AutoRecon](https://github.com/Tib3rius/AutoRecon)     AutoRecon is a multi-threaded network reconnaissance tool which performs automated enumeration of services. It is intended as a time-saving tool for use in CTFs and other penetration testing environments (e.g. OSCP). It may also be useful in real-world engagements.   Used to do the initial enumeration discovery of the target.
-  [dirb](https://tools.kali.org/web-applications/dirb)   URI and DNS Subdomains brute force tool                                                                                                                                                                                                                                     Used to brute force potential files and directories at the URI
-  [Firefox](https://firefox.com)                         Web browser                                                                                                                                                                                                                                                                 Used to view the web site served on the target
+
+  |**Name**                                               |**Description**                                                                                                                                                                                                                                                             |**How it was used**|
+  |---|---|---|
+  |[AutoRecon](https://github.com/Tib3rius/AutoRecon)     |AutoRecon is a multi-threaded network reconnaissance tool which performs automated enumeration of services. It is intended as a time-saving tool for use in CTFs and other penetration testing environments (e.g. OSCP). It may also be useful in real-world engagements.   |Used to do the initial enumeration discovery of the target.|
+  |[dirb](https://tools.kali.org/web-applications/dirb)   |URI and DNS Subdomains brute force tool                                                                                                                                                                                                                                     |Used to brute force potential files and directories at the URI|
+  [Firefox](https://firefox.com)                         |Web browser                                                                                                                                                                                                                                                                 |Used to view the web site served on the target|
